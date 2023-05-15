@@ -92,8 +92,8 @@ plugins:
         height: "42.172vw"
       is_video: True
       video_autoplay: False
-#  - bibtex:
-#      bib_file: "docs/assets/bib/spm.bib"
+  - bibtex:
+      bib_file: "docs/assets/bib/hmri.bib"
   - search:
       lang: en
 
