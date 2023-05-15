@@ -15,7 +15,7 @@ title: QUIQI
 
 Copyright (C) 2021 Laboratory for Neuroimaging Research
 
-## REFERENCE
+## Reference
 Lutti et al. ‘Restoring statistical validity in group analyses of motion-corrupted MRI data’, Human Brain Mapping, 2022. https://doi.org/10.1002/hbm.25767
 
 ## INTRODUCTION
@@ -47,4 +47,4 @@ QUIQI CHECK lies at the very end of image analysis (see below). While this modul
 
 **WITH QUIQI**
 
-[[/images/QUIQI_check3.png|QUIQI_check3]]
+![](/assets/images/tutorials/QUIQI_check3.png)
