@@ -53,6 +53,24 @@ theme:
 
   nav:
     - Home: index.md
+    - Tutorials:
+        - AutoReorient: AutoReorient.md
+        - BIDS: BIDS.md
+        - Contact: Contact.md
+        - Contribute: Contribute.md
+        - DebugMetadataAndLogFiles: DebugMetadataAndLogFiles.md
+        - DefaultsAndCustomization: DefaultsAndCustomization.md
+        - DevelopmentGuidelines: DevelopmentGuidelines.md
+        - GetStarted: GetStarted.md
+        - HelpScripts: HelpScripts.md
+        - HmriDemoDataset: HmriDemoDataset.md
+        - Home: Home.md
+        - MapCreation: MapCreation.md
+        - MetadataLibrary: MetadataLibrary.md
+        - Processing: Processing.md
+        - QUIQI: QUIQI.md
+        - References: References.md
+        - Releases: Releases.md
 
   markdown_extensions:
   - abbr
