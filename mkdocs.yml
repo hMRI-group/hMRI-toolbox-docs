@@ -53,6 +53,8 @@ theme:
 
   nav:
     - Home: index.md
+    - Installation: installation.md
+    - Quick Start: quickstart.md
     - Tutorials:
         - AutoReorient: AutoReorient.md
         - BIDS: BIDS.md
