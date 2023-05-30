@@ -14,23 +14,24 @@ copyright: Copyright &copy; 2012 - 2023 hMRI Toolbox Team and Collaborators
 # Configuration
 theme:
   name: material
+  custom_dir: overrides
   palette:
     - media: "(prefers-color-scheme)"
-      primary: light green
+      primary: indigo
       accent: amber
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: light green
+      primary: indigo
       accent: amber
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: light green
+      primary: indigo
       accent: amber
       toggle:
         icon: material/brightness-4
@@ -51,30 +52,32 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
 
-  nav:
-    - Home: index.md
-    - Installation: installation.md
-    - Quick Start: quickstart.md
-    - Tutorials:
-        - AutoReorient: AutoReorient.md
-        - BIDS: BIDS.md
-        - Contact: Contact.md
-        - Contribute: Contribute.md
-        - DebugMetadataAndLogFiles: DebugMetadataAndLogFiles.md
-        - DefaultsAndCustomization: DefaultsAndCustomization.md
-        - DevelopmentGuidelines: DevelopmentGuidelines.md
-        - GetStarted: GetStarted.md
-        - HelpScripts: HelpScripts.md
-        - HmriDemoDataset: HmriDemoDataset.md
-        - Home: Home.md
-        - MapCreation: MapCreation.md
-        - MetadataLibrary: MetadataLibrary.md
-        - Processing: Processing.md
-        - QUIQI: QUIQI.md
-        - References: References.md
-        - Releases: Releases.md
+nav:
+  - Home: index.md
+  - Information: information.md
+  - Quick Start: quickstart.md
+  - Tutorials:
+      - Home: tutorials/index.md
+      - GetStarted: tutorials/GetStarted.md
+      - MetadataLibrary: tutorials/MetadataLibrary.md
+      - AutoReorient: tutorials/AutoReorient.md
+      - BIDS: tutorials/BIDS.md
+      - Contact: tutorials/Contact.md
+      - Contribute: tutorials/Contribute.md
+      - DebugMetadataAndLogFiles: tutorials/DebugMetadataAndLogFiles.md
+      - DefaultsAndCustomization: tutorials/DefaultsAndCustomization.md
+      - DevelopmentGuidelines: tutorials/DevelopmentGuidelines.md
+      - HelpScripts: tutorials/HelpScripts.md
+      - HmriDemoDataset: tutorials/HmriDemoDataset.md
+      - MapCreation: tutorials/MapCreation.md
+      - Processing: tutorials/Processing.md
+      - QUIQI: tutorials/QUIQI.md
+      - References: tutorials/References.md
+      - Releases: tutorials/Releases.md
+  - Development: development.md
+  - API: API/api.md
 
-  markdown_extensions:
+markdown_extensions:
   - abbr
   - admonition
   - attr_list
@@ -121,13 +124,11 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/spm
+      link: https://github.com/hMRI-group
     - icon: fontawesome/solid/brain
-      link: https://www.fil.ion.ucl.ac.uk/spm/
+      link: https://www.cbs.mpg.de/departments/neurophysics/software/hmri-toolbox
 
 extra_javascript:
   - assets/javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-

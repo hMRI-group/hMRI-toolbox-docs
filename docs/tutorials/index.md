@@ -33,7 +33,7 @@ an on-going project that will be updated regularly.
 **[GET STARTED](GetStarted)**    
 Instructions to install the toolbox, examples for setting up the acquisition protocol.
 
-**[TOOLBOX DEVELOPMENT](DevelopmentGuidelines)**    
+**[TOOLBOX DEVELOPMENT](../DevelopmentGuidelines.md)**    
 Description of the development process and guidelines for developers.
 
 **[JSON METADATA AND DICOM IMPORT](MetadataLibrary)**     
