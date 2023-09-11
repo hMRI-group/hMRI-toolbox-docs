@@ -36,7 +36,7 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
-  logo: assets/images/hmri-toolbox-logo.png
+  logo: assets/images/Logo_Dark_32x32@128x.png
   favicon: assets/images/favicon.png
   icon:
     repo: fontawesome/brands/github

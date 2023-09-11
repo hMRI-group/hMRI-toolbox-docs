@@ -36,7 +36,7 @@ For details of the implemented methods we refer the reader to the respective ori
 
     *Actual Flip Angle Imaging (AFI) method ([Yarnykh2007](References)).*
 
-    A pair of magnitude images acquired with two different repetition times (TR) must be loaded as **B1 input**. The hMRI-toolbox then calculates the B1 transmit bias field map as described in [Yarnykh2007](References).
+    A pair of magnitude images acquired with two different repetition times (TR) must be loaded as **B1 input**. The hMRI Toolbox then calculates the B1 transmit bias field map as described in [Yarnykh2007](References).
 3. **tfl\_b1\_map**
 
     *TFL B1 mapping ([Chung2010](References)).*

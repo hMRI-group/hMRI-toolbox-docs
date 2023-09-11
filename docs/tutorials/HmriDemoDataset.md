@@ -20,7 +20,7 @@ The hMRI demo dataset is used and referred to across the whole toolbox, for tuto
 
 ## Description of the experiment
 
-An example multiparameter mapping (MPM) dataset was acquired on a whole body 3T Prisma system (Siemens Healthcare, Erlangen, Germany) to illustrate the hMRI-toolbox features and provide the users with a full MPM dataset used in the tutorial and examples (see for example the [step-by-step tutorial for map creation](MapCreation#example) and the [toolbox customization examples](DefaultsAndCustomization#examples)). The study was approved by the local ethics committee and informed written consent was obtained from the participant prior to scanning.
+An example multiparameter mapping (MPM) dataset was acquired on a whole body 3T Prisma system (Siemens Healthcare, Erlangen, Germany) to illustrate the hMRI Toolbox features and provide the users with a full MPM dataset used in the tutorial and examples (see for example the [step-by-step tutorial for map creation](MapCreation#example) and the [toolbox customization examples](DefaultsAndCustomization#examples)). The study was approved by the local ethics committee and informed written consent was obtained from the participant prior to scanning.
 
 Rapid calibration data were acquired at the outset of each session to map and consequently correct for inhomogeneities in 
 the B1 transmit field ([Lutti2010](References), [Lutti2012](References)). Eleven spin-echo and stimulated-echo pairs 

@@ -19,7 +19,7 @@ Guidelines and good practices to make sure your data are processed as expected, 
 
 General documentation about writing batch script in SPM can be found in the SPM documentation on the [SPM Home page](https://www.fil.ion.ucl.ac.uk/spm/doc/manual.pdf).
 
-The hMRI-toolbox benefits from the the `matlabbatch` system integrated in SPM. 
+The hMRI Toolbox benefits from the the `matlabbatch` system integrated in SPM. 
 A batch describes which modules should be run on what kind of data and how these modules depend on each other.
 This allows you to easily handle input data and define the desired processing steps.
 Compared to running each processing step interactively, batches have a number of advantages:

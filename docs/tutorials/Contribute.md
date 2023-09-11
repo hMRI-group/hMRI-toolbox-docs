@@ -4,7 +4,7 @@
 
 An inspirational guide to contributing to open-source projects can be found [here](https://opensource.guide/how-to-contribute/).
 
-Contributing to the hMRI-toolbox can be done in many ways and at many levels, 
+Contributing to the hMRI Toolbox can be done in many ways and at many levels, 
 from users to experienced developers.
 
 Contributing involves much more than coding! 
@@ -38,9 +38,9 @@ A short list of features currently under development or considered for future de
 
 ## Introduction and general guidelines
 
-Welcome to the hMRI-toolbox!
+Welcome to the hMRI Toolbox!
 
-The hMRI-toolbox was made publicly available in June 2018. 
+The hMRI Toolbox was made publicly available in June 2018. 
 Until then, its development was carried out by a limited number of developers among whom good communication and good humour prevented any conflict.
 We hope that this will continue, and so we expect communication, mutual respect and good humour to be values held by all contributors.
 
@@ -66,7 +66,7 @@ If you have questions about the hMRI toolbox,
 or want to contribute by answering other users' questions, 
 or wish to keep posted about what's going on with the hMRI toolbox, [join the mailing list][mailing-list-home]!
 
-Go to the [HMRI-TOOLBOX mailing list home page][mailing-list-home] to subscribe, unsubscribe, manage your account and browse the archives. 
+Go to the [hMRI Toolbox mailing list home page][mailing-list-home] to subscribe, unsubscribe, manage your account and browse the archives. 
 
 Once you have subscribed to the mailing list, you can send emails to HMRI-TOOLBOX@JISCMAIL.AC.UK 
 with your questions and/or contribute by answering questions and helping out other users.
@@ -78,7 +78,7 @@ You can also create a password from the same [home page][mailing-list-home] in o
 There are several ways you can contribute issues:
 
 - by opening a new issue for discussion: e.g. if you believe that you have uncovered a bug, 
-creating a new issue in the hMRI-toolbox [issue tracker][hmri-issues-page] is the way to report it.
+creating a new issue in the hMRI Toolbox [issue tracker][hmri-issues-page] is the way to report it.
 - by helping to document an issue: either by providing supporting details 
 (e.g. a test case demonstrating a bug), or providing suggestions on how to address the issue.
 - by tidying up issues: link duplicate issues, suggest new issue labels, go through open issues 
@@ -91,7 +91,7 @@ If not, go ahead! but make sure you include the following information:
 - description of the issue (obviously!): as complete as possible, including error messages, 
 code snippets, type of input, screen shot of image output, options... 
 whatever may help us to identify the source of the problem!
-- version of the hMRI-toolbox:
+- version of the hMRI Toolbox:
 if you are using an official release, the release number contained in the version.txt file of your release is all you need. 
 If you are working on a fork or clone of the master branch, please also report the commit hash you forked from.
 - Matlab version
@@ -121,7 +121,7 @@ You must create a GitHub account or sign into your existing account to proceed.
 
 You can refer to the GitHub documentation on [how to fork a repository](https://help.github.com/articles/fork-a-repo/).
 
-For the hMRI-toolbox:      
+For the hMRI Toolbox:      
 - on GitHub, navigate to the [hMRI toolbox](..) repository,
 - in the top-right corner of the page, click on the `Fork` button
 - your own fork of the repository is now created, somewhere like `https://github.com/<username>/hMRI-toolbox`.
