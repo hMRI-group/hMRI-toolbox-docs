@@ -21,7 +21,7 @@ Output
 
 Examples
 :   Estimate R1 using the small angle approximation:
-    ```
+    ```matlab
     R1 = hmri_calc_R1(struct('data',data_pdw,'fa',fa_pdw,'TR',tr_pdw,'B1',b1map),...
     struct('data',data_t1w,'fa',fa_t1w,'TR',tr_t1w,'B1',b1map), true);
     
@@ -43,7 +43,7 @@ References
 
 ## Function `hmri_calc_R1`
 
-``` title="bubble_sort.py"
+```
 function R1=hmri_calc_R1(PDw,T1w,small_angle_approx)
 hmri_calc_R1 Calculate R1 map from PDw and T1w data.
 

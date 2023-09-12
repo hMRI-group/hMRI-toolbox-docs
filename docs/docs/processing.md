@@ -14,7 +14,7 @@
 
 ## Introduction
 
-The spatial processing implementation of the toolbox relies on the voxel-based quantification (VBQ) approach developed by [Draganski *et al.* 2011](References) to preserve the quantitative nature of qMRI maps during processing. The spatial processing part of the toolbox can be applied to any set of rotationally-invariant qMRI maps, including diffusion MRI scalar parameter maps as well as the standard (R1, PD, MT and R2*) MPM maps.
+The spatial processing implementation of the Toolbox relies on the voxel-based quantification (VBQ) approach developed by [Draganski et al., 2011](references.md#draganski-et-al-2011) to preserve the quantitative nature of qMRI maps during processing. The spatial processing part of the toolbox can be applied to any set of rotationally-invariant qMRI maps, including diffusion MRI scalar parameter maps as well as the standard (R1, PD, MT and R2\*) MPM maps.
 
 The spatial processing pipeline for quantitative data relies on three main operational steps: 
 [segmentation](#segmentation), [diffeomorphic deformation](#diffeomorphic-deformation) and [tissue-weighted smoothing](#tissue-weighted-smoothing). 
@@ -24,7 +24,7 @@ Furthermore a standard [fully integrated processing pipeline](#integrated-pipeli
 to facilitate standard data processing without the need to combine the individual modules.
 
 The processing tools and user interface were developed with in mind the user-friendly and easy processing of 
-parametric maps generated from a series of subjects, assuming each subject has the same small number of images (for example the four (MT, PD, R1, R2*) maps). 
+parametric maps generated from a series of subjects, assuming each subject has the same small number of images (for example the four (MT, PD, R1, R2\*) maps). 
 Therefore each module takes as input several series of images sorted per image type considered (for example the MT maps from all the subjects). The images in each series must follow the same subject-based ordering. In practice one such series of images can easily be selected, manually or through a script, by using the spm_select function features that allow the recursive search of files in all sub-folders and name-filtering according to a specific pattern.
 
 The three main steps and the integrated pipeline are described hereafter.
@@ -36,7 +36,7 @@ in SPM12 ([Ashburner2005](References)) and is interfaced through a single module
 Unlike the *SPM12-Segment* module (single-subject processing), *hMRI-Segment* module can handle and process successively a whole series of subjects. 
 
 The segmentation itself relies on one structural image per subject, typically a MT map, R1 map or T1w image, and a series of tissue probability maps (TPMs). 
-The TPMs used by default in the hMRI-toolbox were specifically derived 
+The TPMs used by default in the hMRI Toolbox were specifically derived 
 from multi-parametric maps ([Lorio2014](References)). 
 By default (adjustable in the batch interface) the gray matter (GM), 
 white matter (WM) and CSF tissue class images will be generated in native space (DARTEL imported version) and standard MNI space, with and without modulation. 
@@ -44,7 +44,7 @@ Moreover, the parametric maps are also warped into MNI space (without modulation
 
 ## Diffeomorphic deformation
 
-This step includes three sub-modules derived from the DARTEL toolbox ([Ashburner2007](References)). 
+This step includes three sub-modules derived from the DARTEL toolbox ([Ashburner2007](references.md#ashburner-et-al-2007)). 
 The key idea of DARTEL is to iteratively align the tissue class images, e.g. the gray and 
 white matter, from a series of subjects to their own average by successively generating average shaped images with increasing  overlap and detail (called "Templates"). 
 This only depends on the DARTEL-imported tissue class images from each subject.

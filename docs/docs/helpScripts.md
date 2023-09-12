@@ -860,10 +860,10 @@ __________________________________________________________________________
     Select structural images, i.e. T1w or MT, for "unified segmentation". They are used to create the individuam tissue class maps, e.g. GM and WM posterior probability maps
 
   - **Parametric maps**    
-    Select whole brain parameter maps (e.g. MT, R2*, FA, etc.) from all subjects for processing, one type at a time.
+    Select whole brain parameter maps (e.g. MT, R2\*, FA, etc.) from all subjects for processing, one type at a time.
 
     - **Parametric maps (single type)**    
-      Select whole brain parameter maps (e.g. MT, R2*, FA, etc.) from all subjects for processing.
+      Select whole brain parameter maps (e.g. MT, R2\*, FA, etc.) from all subjects for processing.
 
   - **Gaussian FWHM**    
     Specify the full-width at half maximum (FWHM) of the Gaussian blurring kernel in mm. Three values should be entereddenoting the FWHM in the x, y and z directions.
@@ -902,10 +902,10 @@ __________________________________________________________________________
           Select a directory where output files will be written to.
 
       - **Parametric maps**    
-        Select whole brain parameter maps (e.g. MT, R2*, FA, etc.) from all subjects for processing, one type at a time.
+        Select whole brain parameter maps (e.g. MT, R2\*, FA, etc.) from all subjects for processing, one type at a time.
 
         - **Parametric maps**    
-          Select whole brain parameter maps (e.g. MT, R2*, FA, etc.) from all subjects for processing.
+          Select whole brain parameter maps (e.g. MT, R2\*, FA, etc.) from all subjects for processing.
 
       - **Ref. structurals**    
         Specify a channel for processing.
@@ -1115,10 +1115,10 @@ __________________________________________________________________________
             Select the tissue classes images (c*)
 
         - **Parameter maps**    
-          Select whole brain parameter maps (e.g. MT, R2*, FA etc).
+          Select whole brain parameter maps (e.g. MT, R2\*, FA etc).
 
           - **Volumes**    
-            Select whole brain parameter maps (e.g. MT, R2*, FA etc).
+            Select whole brain parameter maps (e.g. MT, R2\*, FA etc).
 
         - **Flow fields**    
           Flow fields.
@@ -1134,10 +1134,10 @@ __________________________________________________________________________
     in order to limit partial volume effect.
 
     - **Warped parameter maps**    
-      Select whole brain parameter maps (e.g. MT, R2*, FA etc) warped into MNI space.
+      Select whole brain parameter maps (e.g. MT, R2\*, FA etc) warped into MNI space.
 
       - **Volumes**    
-        Select whole brain parameter maps (e.g. MT, R2*, FA etc) warped into MNI space.
+        Select whole brain parameter maps (e.g. MT, R2\*, FA etc) warped into MNI space.
 
     - **Modulated warped tissue class**    
       Select the modulated warped tissue classes (TC) of interest from all subjects. This ould typically be the mwc1* and mwc2* images for GM and WM.

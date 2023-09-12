@@ -56,26 +56,29 @@ nav:
   - Home: index.md
   - Information: information.md
   - Quick Start: quickstart.md
-  - Tutorials:
-      - Home: tutorials/index.md
-      - GetStarted: tutorials/GetStarted.md
-      - MetadataLibrary: tutorials/MetadataLibrary.md
-      - AutoReorient: tutorials/AutoReorient.md
-      - BIDS: tutorials/BIDS.md
-      - Contact: tutorials/Contact.md
-      - Contribute: tutorials/Contribute.md
-      - DebugMetadataAndLogFiles: tutorials/DebugMetadataAndLogFiles.md
-      - DefaultsAndCustomization: tutorials/DefaultsAndCustomization.md
-      - DevelopmentGuidelines: tutorials/DevelopmentGuidelines.md
-      - HelpScripts: tutorials/HelpScripts.md
-      - HmriDemoDataset: tutorials/HmriDemoDataset.md
-      - MapCreation: tutorials/MapCreation.md
-      - Processing: tutorials/Processing.md
-      - QUIQI: tutorials/QUIQI.md
-      - References: tutorials/References.md
-      - Releases: tutorials/Releases.md
-  - Development: development.md
-  - API: API/api.md
+  - Docs:
+      - Home: docs/index.md
+      - Getting Started: docs/getStarted.md
+      - Metadata Library: docs/metadataLibrary.md
+      - Automatic Reorientation: docs/autoReorient.md
+      - BIDS: docs/BIDS.md
+      - Debug Metadata and Log Files: docs/debugMetadataAndLogFiles.md
+      - Defaults and Customization: docs/defaultsAndCustomization.md
+      - Help Scripts: docs/helpScripts.md
+      - Hmri Demo Dataset: docs/hmriDemoDataset.md
+      - Map Creation: docs/mapCreation.md
+      - Processing: docs/processing.md
+      - QUIQI: docs/QUIQI.md
+      - References: docs/references.md
+      - Releases: docs/releases.md
+  - Development:
+      - Home: development/index.md
+      - Unit Testing: development/unit_tests.md
+      - Releases: development/releases.md
+      - Contributing: development/contribute.md
+      - API Reference: development/api.md
+  - Contact: contact.md
+#  - API: API/api.md
 
 markdown_extensions:
   - abbr
@@ -109,14 +112,13 @@ markdown_extensions:
       permalink: true
 
 plugins:
+  - macros
   - mkdocs-video:
       css_style:
         width: "100%"
         height: "42.172vw"
       is_video: True
       video_autoplay: False
-  - bibtex:
-      bib_file: "docs/assets/bib/hmri.bib"
   - search:
       lang: en
 
@@ -125,7 +127,9 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/hMRI-group
-    - icon: fontawesome/solid/brain
+    - icon: fontawesome/solid/comment
+      link: https://matrix.to/#/#hMRI-toolbox:gitter.im
+    - icon: mpg
       link: https://www.cbs.mpg.de/departments/neurophysics/software/hmri-toolbox
 
 extra_javascript:
