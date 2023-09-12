@@ -32,12 +32,6 @@ such as the MR g-ratio and to derive standard and novel MRI biomarkers
 The hMRI toolbox is therefore the first step towards in vivo histology using MRI (hMRI) and is being extended further in
 this direction.
 
-## Scientific Publications and Posters
-
-For a reference on the scientific background, methods and concepts please use this paper
-([Tabelow2019](docs/references.md#tabelow2019); also available as a pre-print paper)
-and cite it when publishing results compiled with the hMRI Toolbox. A conference poster is also available here.
-
 ## Developers of the hMRI Toolbox
 
 The development of the hMRI Toolbox is an international collaborative effort including the following sites and
@@ -54,6 +48,12 @@ developers:
 - Gunther Helms (Department of Medical Radiation Physics, Lund University, Lund, Sweden)
 - Lars Ruthotto (Emory University, Atlanta, GA, United States)
 - Gabriel Ziegler (Otto-von-Guericke-University Magdeburg, Magdeburg, Germany)
+
+## Scientific Publications and Posters
+
+For a reference on the scientific background, methods and concepts please use this paper
+([Tabelow2019](docs/references.md#tabelow2019); also available as a pre-print paper)
+and cite it when publishing results compiled with the hMRI Toolbox. A conference poster is also available here.
 
 ## Acknowledgments and Funding
 

@@ -51,6 +51,7 @@ This will serve the site on `http://127.0.0.1:8000` and you can preview it in yo
 # Todo
 
 - [ ] Gitter invite link for socials at the bottom
+- [ ] Add missing reference to Ashburner 2007 in docs/processing.md (look for the TODO item)
 - [x] Convert bullet points of references in tutorials/references into subsubsections so that we can link to specific papers.
 - [ ] In docs/getStarted, the first sentence is "Before using the hMRI Toolbox, please read the README.md and LICENSE files."
       No, this here is going to be the central documentation and everything important will be documented here.

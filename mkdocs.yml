@@ -58,10 +58,10 @@ nav:
   - Docs:
       - Home: docs/index.md
       - Getting Started: docs/getStarted.md
-      - Metadata Library: docs/metadataLibrary.md
+      - JSON Metadata and DICOM to NIfTI Conversion: docs/metadataLibrary.md
       - Automatic Reorientation: docs/autoReorient.md
       - BIDS: docs/BIDS.md
-      - Debug Metadata and Log Files: docs/debugMetadataAndLogFiles.md
+      - Tips & tricks for Processing and Debugging: docs/debugMetadataAndLogFiles.md
       - Defaults and Customization: docs/defaultsAndCustomization.md
       - Help Scripts: docs/helpScripts.md
       - hMRI Demo Dataset: docs/hmriDemoDataset.md

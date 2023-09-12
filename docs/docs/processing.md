@@ -73,7 +73,7 @@ efficiently warp the few parametric maps of each subject.
 
 ## Tissue-weighted smoothing
 
-As proposed in [Draganski2011](references.md#draganski2011), the parametric maps should be smoothed while accounting for the
+As proposed in [Draganski et al., 2011](references.md#draganski2011), the parametric maps should be smoothed while accounting for the
 partial volume contribution of the tissue density in each voxel in subject space. One *tissue-weighted smoothed*
 parameter map is generated per tissue class considered. These images can then be statistically analyzed, per parameter
 map and tissue class type.
