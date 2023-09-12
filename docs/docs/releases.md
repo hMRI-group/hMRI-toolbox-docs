@@ -22,7 +22,7 @@ the [releases page][releases-page] (commit(s) to master since this release) to c
 of the master branch.
 
 Developments are carried out on the developer's own repository forked from the master branch and merged to the master
-branch when appropriate (see [Develop & Contribute](Contribute) for details).
+branch when appropriate (see [Develop & Contribute](../development/contribute.md) for details).
 
 ## Versioning
 
