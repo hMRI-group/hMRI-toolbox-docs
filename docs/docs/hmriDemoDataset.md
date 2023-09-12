@@ -19,8 +19,8 @@ article: [Callaghan2019](references.md#callaghan2019).
 
 An example multiparameter mapping (MPM) dataset was acquired on a whole body 3T Prisma system (Siemens Healthcare,
 Erlangen, Germany) to illustrate the hMRI Toolbox features and provide the users with a full MPM dataset used in the
-tutorial and examples (see for example the [step-by-step tutorial for map creation](mapCreation#example) and
-the [toolbox customization examples](defaultsAndCustomization#examples)). The study was approved by the local ethics
+tutorial and examples (see for example the [step-by-step tutorial for map creation](mapCreation.md#example) and
+the [toolbox customization examples](defaultsAndCustomization.md#examples)). The study was approved by the local ethics
 committee and informed written consent was obtained from the participant prior to scanning.
 
 Rapid calibration data were acquired at the outset of each session to map and consequently correct for inhomogeneities

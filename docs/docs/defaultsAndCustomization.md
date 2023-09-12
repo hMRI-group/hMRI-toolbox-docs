@@ -9,7 +9,7 @@ the [`config`]({{config.repo_url}}/blob/master/config) directory.
 Some parameters are meant to be easily and safely modified by any user, while others should only be modified by advanced
 users.
 
-## Organization of the defaults
+## Organization of the Defaults
 
 Defaults of the parameters that can be used to modify the behaviour of the toolbox are stored in
 the [`config`]({{config.repo_url}}/blob/master/config) (root) directory of the toolbox.
@@ -24,10 +24,10 @@ Example files to turn on useful features of the toolbox can be found in
 the  [`examples`]({{config.repo_url}}/blob/master/examples) directory.
 
 Unlike the processing parameters, the acquisition parameters are retrieved from the input images
-if [metadata](MetadataLibrary) are available. Acquisition parameters specified in the defaults are only provided as a
+if [metadata](metadataLibrary.md) are available. Acquisition parameters specified in the defaults are only provided as a
 fallback solution when no metadata are available.
 Since acquisition parameters are likely to vary from protocol to protocol, the use of metadata is strongly recommended (
-see [JSON metadata and DICOM import](MetadataLibrary)).
+see [JSON metadata and DICOM import](metadataLibrary.md)).
 For some non-product sequences, though, metadata might not be retrievable and default acquisition parameters must be
 customized (see below).
 
@@ -133,7 +133,7 @@ These parameters are generally used across all the hMRI modules.
 
 - **TPM** [ *hMRI/tpm/eTPM.nii* ] - recommended set of Tissue Probability Maps for segmentation and spatial processing.
 
-- **autoreorient_template** - default template for [auto-reorientation](AutoReorient).
+- **autoreorient_template** - default template for [auto-reorientation](autoReorient.md).
 
 - **segment** - default parameters for segmentation. This field is effectively the job to be handed to
   spm\_preproc\_run.    
@@ -143,18 +143,25 @@ These parameters are generally used across all the hMRI modules.
     - save both BiasField and BiasCorrected volumes (`channel.write = [1 1]`)
     - recommended values from SPM12 (October 2017)
 
-### B1 mapping processing parameters
+### B1 Mapping Processing Parameters
 
 Relevant default parameters are listed below for each type of B1 mapping input. Please refer
 to [`hMRI/config/hmri_b1_standard_defaults.m`]({{config.repo_url}}/blob/master/config/hmri_b1_standard_defaults.m) for a
 complete list. See further below for [examples](#examples) of B1 local defaults customization based on
 the [`hmri_b1_local_defaults.m`]({{config.repo_url}}/blob/master/config/local/hmri_b1_local_defaults.m) template.
 
-NOTE: For acquisition parameters, default values are a fallback solution for B1 data processing when no metadata are
-available. Use of metadata is recommended to retrieve site- & protocol-specific parameters and ensure appropriate data
-handling and processing.
+!!! note
 
-#### i3D\_EPI - EPI SPIN-ECHO (SE)/STIMULATED-ECHO (STE) METHOD [[Lutti *et al.* 2010 & 2012](References)].
+    For acquisition parameters, default values are a fallback solution for B1 data processing when no metadata are
+    available. Use of metadata is recommended to retrieve site- & protocol-specific parameters and ensure appropriate data
+    handling and processing.
+
+#### i3D\_EPI
+
+!!! info
+
+    EPI spin-echo (SE)/stimulated-echo (STE) method.
+    Please see [Lutti2010](references.md#lutti2010) and [Lutti2012](references.md#lutti2012)
 
 - B0 & B1 processing parameters - **hmri_def.b1map.i3D_EPI.b1proc**
     - **T1** [ *1192* ]: average brain T1 (ms). Default value is strictly valid only for in vivo brain imaging at 3T.
@@ -200,7 +207,12 @@ handling and processing.
     - **shortTE** [ *10* ]: shortest echo time in ms
     - **longTE** [ *12.46* ]: longest echo time in ms
 
-#### i3D\_AFI - ACTUAL FLIP ANGLE IMAGING (AFI) METHOD [[Yarnykh *et al.* 2007](References)]
+#### i3D\_AFI
+
+!!! info
+
+    Actual flip angle imaging (AFI) method.
+    Please see [[Yarnykh2007](references.md#yarnykh2007)]
 
 - Acquisition parameters **hmri_def.b1map.i3D_AFI.b1acq**
     - **TR2TR1ratio** [ *0.2* ]: TR of second input volume divided by TR of first input volume (acquisition parameter).
@@ -221,7 +233,11 @@ handling and processing.
     - **B1FWHM** [ *8* ]: (mm) full-width half maximum of smoothing kernel for B1 map. Set to 0 to disable smoothing. If
       **domask** is `true`, then smoothing will only be done within the mask.
 
-#### DAM - DOUBLE ANGLE MAPPING
+#### DAM
+
+!!! info
+
+    Double angle mapping.
 
 - Acquisition parameters **hmri_def.b1map.DAM.b1acq**
     - **alphanom** [ *60* ]: (degrees) nominal flip angle (acquisition parameter). This is normally read from the
@@ -239,7 +255,11 @@ handling and processing.
     - **B1FWHM** [ *8* ]: (mm) full-width half maximum of smoothing kernel for B1 map. Set to 0 to disable smoothing. If
       **domask** is `true`, then smoothing will only be done within the mask.
 
-#### TFL\_B1\_MAP [[Chung *et al.* 2010](References)]
+#### TFL\_B1\_MAP
+
+!!! info
+
+    Please see [Chung2010](references.md#chung2010).
 
 - Masking parameters (disabled by default) **hmri_def.b1map.tfl_b1_map.b1mask**
     - **domask** [ *false* ]: whether to mask
@@ -253,7 +273,11 @@ handling and processing.
     - **B1FWHM** [ *8* ]: (mm) full-width half maximum of smoothing kernel for B1 map. Set to 0 to disable smoothing. If
       **domask** is `true`, then smoothing will only be done within the mask.
 
-#### RF\_MAP - SE/STE METHOD FROM A SERVICE SEQUENCE BY SIEMENS
+#### RF\_MAP
+
+!!! info
+
+    SE/STE method from a service sequence by Siemens.
 
 - Masking parameters (disabled by default) **hmri_def.b1map.rf_map.b1mask**
     - **domask** [ *false* ]: whether to mask
@@ -267,14 +291,18 @@ handling and processing.
     - **B1FWHM** [ *8* ]: (mm) full-width half maximum of smoothing kernel for B1 map. Set to 0 to disable smoothing. If
       **domask** is `true`, then smoothing will only be done within the mask.
 
-#### UNICORT approach [[Weiskopf *et al.* 2011](References)]
+#### UNICORT
+
+!!! info
+
+    Please see [Weiskopf2011](references.md#weiskopf2011).
 
 - Processing parameters - **hmri_def.b1map.UNICORT.procpar**
     - **reg** = 10^-3
     - **FWHM** = 60
     - **thr** = 5
 
-#### PRE-PROCESSED B1
+#### Pre-processed B1
 
 - Any B1 map pre-calculated using one of the above methods or another method can be used as pre-processed B1 input.
 - A scaling factor can be entered in the batch to convert the pre-processed B1 map into appropriate units (the toolbox
@@ -291,23 +319,22 @@ handling and processing.
     - **B1FWHM** [ *0* ]: (mm) full-width half maximum of smoothing kernel for B1 map. Set to 0 to disable smoothing. If
       **domask** is `true`, then smoothing will only be done within the mask.
 
-#### NO B1 BIAS CORRECTION
+#### No B1 Bias Correction
 
 - No parameters relevant for customization.
 
-### Create hMRI maps parameters
+### Create hMRI Maps Parameters
 
-#### GENERAL R1/PD/R2\*/MT MAP CREATION PARAMETERS
+#### General R1/PD/R2\*/MT Map Creation Parameters
 
 - **small_angle_approx** [ *true* ] - whether to use the small angle approximation when computing R1 and PD. `true`:
-  classic method from [Helms *et al.* 2008a](References). `false`: method that is also valid for large flip angles
-  from [Edwards *et al.* 2021](References). Note that if imperfect spoiling correction is used, then the correction
+  classic method from [Helms2008a](references.md#helms2008a). `false`: method that is also valid for large flip angles
+  from [Edwards2021](references.md#edwards2021). Note that if imperfect spoiling correction is used, then the correction
   parameters must have been calculated using the same approximation level.
 
-- **R2sOLS** [ *true* ] - create a combined R2\* map using all of the contrasts (ESTATICS; [Weiskopf *et
-  al.* 2014](References)).
+- **R2sOLS** [ *true* ] - create a combined R2\* map using all the contrasts (ESTATICS; [Weiskopf2014](references.md#weiskopf2014)).
 - **R2s_fit_method** [ *'OLS'* ] - choose method of R2\* fitting. This is a trade-off between speed and accuracy;
-  see [Edwards *et al.* 2022](References) for more information. `'OLS'`: classic ESTATICS log-linear ordinary least
+  see [Edwards2022](references.md#edwards2022) for more information. `'OLS'`: classic ESTATICS log-linear ordinary least
   squares model; fast but not as accurate as WLS1. `'WLS1'`: log-linear weighted least squares ESTATICS with one
   iteration; slower than OLS but significantly more accurate because it accounts for the heteroskedasticity induced by
   the logarithm. Uses parallelization over voxels to speed up calculation. `'WLS2'` and `'WLS3'`: log-linear weighted
@@ -325,8 +352,8 @@ handling and processing.
     - number of contrasts available (fewer echoes per contrast required for 3 (PDw, T1w, MTw) contrasts as compared to 2
       or even 1).
 
-  To be on the safe side, a minimum of 6 echoes is recommended ([Weiskopf *et al.* 2014](References)). Further studies
-  are required to come up with more detailed and informed guidelines. Use fewer echoes at your own risk...!
+  To be on the safe side, a minimum of 6 echoes is recommended ([Weiskopf2014](references.md#weiskopf2014)).
+  Further studies are required to come up with more detailed and informed guidelines. Use fewer echoes at your own risk...!
 
 - **fullOLS** [ *true* ] - `true`: then ESTATICS fit at TE=0 is used for the further map calculation steps. This is the
   recommended method to get rid of any R2\* bias in the other quantitative maps. `false`: the average over echoes for
@@ -375,15 +402,15 @@ handling and processing.
   approach. Based on the same idea, in the absence of a measured B1 transmit field, the B1 transmit bias field map
   estimated from the R1 map using UNICORT could be used to remove the higher-order transmit field contribution in MT
   maps. Again, without further methodological validation of these methods, it is not recommended to use the
-  lower-accuracy UNICORT-derived B1 maps ([Weiskopf *et al.* 2011](References)) for correction of the higher-order B1
+  lower-accuracy UNICORT-derived B1 maps ([Weiskopf2011](references.md#weiskopf2011)) for correction of the higher-order B1
   transmit effects on MT saturation.
 
-#### RF SENSITIVITY BIAS CORRECTION
+#### RF Sensitivity Bias Correction
 
 - **RFsens.smooth_kernel** [ *12* ] - smoothing kernel applied to the sensitivity maps used for RF sensitivity
   correction (when RF sensitivity mapping data have been acquired).
 
-#### THRESHOLD VALUES FOR qMRI MAPS
+#### Threshold Values for qMRI Maps
 
 - **qMRI_maps_thresh.R1** [ *2000* ] - for R1 maps. NOTE: threshold given in s-1 **×1000** (i.e. 2 s-1 here).
 - **qMRI_maps_thresh.A** [ *10^5* ] - for A maps, i.e. PD maps before BiasField correction and calibration. NOTE: this
@@ -395,7 +422,7 @@ handling and processing.
 - **qMRI_maps_thresh.MTR_synt** [ *50* ] - for MTR_synth maps.
 - **qMRI_maps_thresh.MT** [ *5* ] - for MT maps in [p.u.].
 
-#### PD MAP CALCULATION
+#### PD Map Calculation
 
 - **PDproc.calibr** [ *true* ] - whether to calibrate the PD map based on PD(WM) = 69% [Tofts 2003]. Will be
   automatically set to *false* if no B1 map is available
@@ -408,17 +435,16 @@ handling and processing.
 - **PDproc.nr_echoes_forA** [ *6* ] - number of PD-weighted echoes to be used to calculate the PD map. In order to
   minimize R2\* bias on the PD estimates and gain in robustness for bias-field correction, the number of echoes should
   be minimum ("average" calculated over the first echo only) for PD calculation. However, with T2\*-weighting bias
-  correction (see below), a higher number of echoes is preferred in order to provide good SNR [[Balteau *et
-  al*. 2018](References)].
+  correction (see below), a higher number of echoes is preferred in order to provide good SNR [Balteau2018](references.md#balteau2018)].
 - **PDproc.T2scorr** [ *true* ] - to correct the A map for T2\*-weighting bias before PD map calculation. Not necessary
-  if the fullOLS option is enabled [[Balteau *et al*. 2018](References)].
+  if the fullOLS option is enabled [[Balteau2018](references.md#balteau2018)].
 
-#### IMPERFECT RF SPOILING CORRECTION
+#### Imperfect RF Spoiling Correction
 
 The correction parameters used in `hmri_create_MTProt.m` to correct for imperfect RF spoiling in R1 map calculation are
-based on [[Preibisch and Deichmann, 2009](References)]. The correction requires that a B1+ map be available (in addition
+based on [[Preibisch2009](references.md#preibisch2009)]. The correction requires that a B1+ map be available (in addition
 to PD- and T1-weighted images). The correction parameters used in the hMRI toolbox can be calculated using a dedicated
-module in the toolbox. See [[Corbin & Callaghan. 2021](References)] for guidance on calculation including the choice of
+module in the toolbox. See [Corbin2021](references.md#corbin2021) for guidance on calculation including the choice of
 T2 time and the moment of the spoiler gradients and the diffusion-spoiling effects of the readout.
 
 The correction values P2\_a and P2\_b given in this section have been pre-calculated for a range of acquisition
@@ -426,7 +452,7 @@ parameters most commonly found in our MPM protocols (namely the Echo Times (TE),
 FA) of the respective multi-echo FLASH acquisitions). In future versions, the calculation will be more generally
 extended to other sets of acquisition parameters as an additional module. Currently, no RF spoiling correction will be
 applied if no match is found between the MPM acquisition parameters and the parameters sets defined below.
-Please [contact](Contacts) us if you wish to correct for imperfect spoiling effects and your acquisition parameters are
+Please [contact](../contact.md) us if you wish to correct for imperfect spoiling effects and your acquisition parameters are
 not among the standard ones defined below.
 
 If the correction values were computed using the small angle approximation for R1 estimation, then they will need to be
@@ -439,7 +465,7 @@ spoiling correction, make sure the coefficients retrieved were definitely calcul
 
 - **imperfectSpoilCorr.enabled** [ *false* ]
 
-#### Default MPM acquisition parameters (*v2k protocol*, Prisma)
+#### Default MPM Acquisition Parameters (*v2k Protocol*, Prisma)
 
 These values are updated at runtime in `hmri_create_MTProt.m` in order to choose the right RF spoiling correction
 parameters. The acquisition parameters include the (first) Echo Times (TE) - assuming equidistant echoes in the
@@ -456,13 +482,13 @@ multi-echo acquisition, Repetition Times (TR) and Flip Angles (FA) of the respec
 - **MPMacq.fa_pdw** [ *6* ] - in deg
 - **MPMacq.tag** [ *v2k* ] - tag for the protocol (default is the v2k protocol)
 
-#### Protocol tags and pre-calculated correction factors
+#### Protocol Tags and Pre-calculated Correction Factors
 
 Below, for each quadruplet of \[TR\_pdw TR\_t1w fa\_pdw fa\_t1w\] values, a protocol tag is defined together with the
 pre-calculated P2\_a and P2\_b correction factors. NOTE: all tags MUST start with a letter and include only letters,
 numbers and underscores (NO space) since they are used to define a structure fieldname for RF spoiling correction.
 
-##### 1. classic FIL protocol [[Weiskopf et al. 2011](References)]:
+##### 1. Classic FIL Protocol [Weiskopf2011](references.md#weiskopf2011):
 
 - **MPMacq_set.tags{1}** [ *ClassicFIL* ]
 - **MPMacq_set.vals{1}** [ *23.7 18.7 6 20* ] - [TR_pdw TR_t1w fa_pdw fa_t1w] values
@@ -472,7 +498,7 @@ numbers and underscores (NO space) since they are used to define a structure fie
 - **imperfectSpoilCorr.ClassicFIL.small_angle_approx** = `true`;
 - **imperfectSpoilCorr.ClassicFIL.enabled** [ *hmri_def.imperfectSpoilCorr.enabled* ]
 
-##### 2. new FIL/Helms protocol
+##### 2. New FIL/Helms Protocol
 
 - **MPMacq_set.tags{2}** [ *NewFILHelms* ]
 - **MPMacq_set.vals{2}** [ *24.5 24.5 5 29* ] - [TR_pdw TR_t1w fa_pdw fa_t1w] values
@@ -482,7 +508,7 @@ numbers and underscores (NO space) since they are used to define a structure fie
 - **imperfectSpoilCorr.NewFILHelms.small_angle_approx** = `true`;
 - **imperfectSpoilCorr.NewFILHelms.enabled** [ *hmri_def.imperfectSpoilCorr.enabled* ]
 
-##### 3. Siemens product sequence protocol used in Lausanne (G Krueger)
+##### 3. Siemens Product Sequence Protocol used in Lausanne (G Krueger)
 
 - **MPMacq_set.tags{3}** [ *SiemPrLausGK* ]
 - **MPMacq_set.vals{3}** [ *24.0 19.0 6 20* ] - [TR_pdw TR_t1w fa_pdw fa_t1w] values
@@ -492,7 +518,7 @@ numbers and underscores (NO space) since they are used to define a structure fie
 - **imperfectSpoilCorr.SiemPrLausGK.small_angle_approx** = `true`;
 - **imperfectSpoilCorr.SiemPrLausGK.enabled** [ *hmri_def.imperfectSpoilCorr.enabled* ]
 
-##### 4. High-res (0.8mm) FIL protocol
+##### 4. High-res (0.8mm) FIL Protocol
 
 - **MPMacq_set.tags{4}** [ *HResFIL* ]
 - **MPMacq_set.vals{4}** [ *23.7 23.7 6 28* ] - [TR_pdw TR_t1w fa_pdw fa_t1w] values
@@ -502,7 +528,7 @@ numbers and underscores (NO space) since they are used to define a structure fie
 - **imperfectSpoilCorr.HResFIL.small_angle_approx** = `true`;
 - **imperfectSpoilCorr.HResFIL.enabled** [ *hmri_def.imperfectSpoilCorr.enabled* ]
 
-##### 5. NEW  High-res (0.8mm) FIL protocol
+##### 5. New  High-res (0.8mm) FIL Protocol
 
 - **MPMacq_set.tags{5}** [ *NHResFIL* ]
 - **MPMacq_set.vals{5}** [ *25.25 25.25 5 29* ] - [TR_pdw TR_t1w fa_pdw fa_t1w] values
@@ -512,7 +538,7 @@ numbers and underscores (NO space) since they are used to define a structure fie
 - **imperfectSpoilCorr.NHResFIL.small_angle_approx** = `true`;
 - **imperfectSpoilCorr.NHResFIL.enabled** [ *hmri_def.imperfectSpoilCorr.enabled* ]
 
-##### 6. NEW  1mm protocol - seq version v2k (default)
+##### 6. New  1mm Protocol - Seq Version v2k (default)
 
 - **MPMacq_set.tags{6}** [ *v2k* ]
 - **MPMacq_set.vals{6}** [ *24.5 24.5 6 21* ] - [TR_pdw TR_t1w fa_pdw fa_t1w] values
@@ -522,11 +548,13 @@ numbers and underscores (NO space) since they are used to define a structure fie
 - **imperfectSpoilCorr.v2k.small_angle_approx** = `true`;
 - **imperfectSpoilCorr.v2k.enabled** [ *hmri_def.imperfectSpoilCorr.enabled* ]
 
-##### 7. 800um protocol - seq version v3* released used by MEG group
+##### 7. 800um Protocol - Seq Version v3* Released used by MEG Group
 
-NOTE: Correction parameters below were determined via Bloch-Torrey simulations but end result agrees well with
-EPG-derived correction for this RF spoiling increment of 137
-degrees [[Callaghan et al. ISMRM, 2015, #1694](References)].
+!!! note
+
+    Correction parameters below were determined via Bloch-Torrey simulations but end result agrees well with
+    EPG-derived correction for this RF spoiling increment of 137
+    degrees [Callaghan2015a](references.md#callaghan2015a).
 
 - **MPMacq_set.tags{6}** [ *v3star* ]
 - **MPMacq_set.vals{6}** [ *25 25 6 21* ] - [TR_pdw TR_t1w fa_pdw fa_t1w] values
@@ -536,7 +564,7 @@ degrees [[Callaghan et al. ISMRM, 2015, #1694](References)].
 - **imperfectSpoilCorr.v3star.small_angle_approx** = `true`;
 - **imperfectSpoilCorr.v3star.enabled** [ *hmri_def.imperfectSpoilCorr.enabled* ]
 
-##### Unknown protocol
+##### Unknown Protocol
 
 If the acquisition parameters are recognised as none of the above predefined sets, no RF spoiling correction will be
 applied.
@@ -544,9 +572,9 @@ applied.
 - **imperfectSpoilCorr.Unknown.tag** = 'Unknown protocol. No spoiling correction defined.'
 - **imperfectSpoilCorr.Unknown.enabled** [ *false* ]
 
-### Process hMRI maps parameters
+### Process hMRI Maps Parameters
 
-#### UNIFIED SEGMENTATION PARAMETERS
+#### Unified Segmentation Parameters
 
 The recommended Tissue Probability Maps (TPM) for segmentation in the Process hMRI maps module are - by default - the
 same as the global ones, but one could (want to) use another set of TPM at some point. The map creation works with "
@@ -567,7 +595,7 @@ Below are provided examples illustrating how the toolbox can be customized, conc
 sample dataset, available [here][hMRI-dataset-zip-to-download]. All examples provided in the Wiki are available in
 the [`hMRI/examples`]({{config.repo_url}}/blob/master/examples) directory.
 
-### Global parameters customization
+### Global Parameters Customization
 
 Global parameters, generally used across all the toolbox modules, allow you to select specific processing parameters and
 options. In general, standard default parameters are considered a reference and do not require any modification for the
@@ -586,7 +614,7 @@ customized default values effective.
 - under `Defaults parameters`, select `Customised`.
 - under `Customised`, select the example file (modified or not).
 - select SPM > Tools > hMRI Tools > Create hMRI maps.
-- see the [map creation step-by-step example](MapCreation#example) to fill in the fields for this module.
+- see the [map creation step-by-step example](mapCreation.md#example) to fill in the fields for this module.
 - save and run the batch.
 
 For comparison, the same batch can be run:
@@ -595,10 +623,10 @@ For comparison, the same batch can be run:
   file [`hmri_local_default_example_1.m`]({{config.repo_url}}/blob/master/examples/hmri_local_defaults_example_1.m);
 - with `Standard` instead of `Customised` under `Defaults parameters` in the `Configure toolbox` module.
 
-### B1 mapping parameters customization
+### B1 Mapping Parameters Customization
 
-B1 mapping parameters, especially for the 3D-EPI SE/STE ([Lutti *et al.* 2009 & 2012](References)) and 3D-AFI ([Yarnykh
-*et al.* 2007](References)) types of data acquisition, are more likely to require customization in order to account for
+B1 mapping parameters, especially for the 3D-EPI SE/STE ([Lutti2009](references.md#lutti2009), [Lutti2012](references.md#lutti2012)) and 3D-AFI 
+([Yarnykh2007](references.md#yarnykh2007)) types of data acquisition, are more likely to require customization in order to account for
 local parameters and generate the B1 map output correctly. Many different sequences and protocols are available to
 generate such B1 mapping data, and acquisition parameters cannot be retrieved in a consistent way across sequences. As a
 result, even if metadata are available, the toolbox might not be able to retrieve the required parameters. In that case,
@@ -621,7 +649,7 @@ To run the **B1 customization example**:
   the `mfc_seste_b1map_v1e_0004`, `gre_field_mapping_1acq_rl_0005` and `gre_field_mapping_1acq_rl_0006` directories).
   That way, no metadata are available to process B1 mapping data. Default values will be used.
 - In the SPM12 batch GUI, select SPM > Tools > hMRI Tools > Create hMRI maps.
-- See the [map creation step-by-step example](MapCreation#example) to fill in the fields for this module.
+- See the [map creation step-by-step example](mapCreation.md#example) to fill in the fields for this module.
 - In `B1 bias correction` > `Processing parameters`, select `Customised B1 default file`, then select the
   customised [`hmri_b1_local_defaults_example_1.m`]({{config.repo_url}}/blob/master/examples/hmri_b1_local_defaults_example_1.m).
 - Save the batch and run the map creation module.
@@ -631,7 +659,7 @@ For comparison, you can:
 - **variant 1**: Run the same batch but change `B1 bias correction` > `Processing parameters` back
   to `Use metadata or standard defaults`.
 - **variant 2**: Run `Create hMRI maps` exactly as described in
-  the [map creation step-by-step example](MapCreation#tutorial) (including all metadata *.json files).
+  the [map creation step-by-step example](mapCreation.md#example) (including all metadata *.json files).
 
 Relevant aspects to compare:
 
@@ -645,4 +673,5 @@ Relevant aspects to compare:
 - other quantitative maps (MT, PD, R1) will also slightly differ in **variant 1** as compared to **variant 2** and the *
   *B1 customization example**.
 
-[hMRI-dataset-zip-to-download]: HmriDemoDataset
+[hMRI-dataset-zip-to-download]: hmriDemoDataset.md
+ 

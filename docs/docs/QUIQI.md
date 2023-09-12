@@ -30,7 +30,7 @@ analysis (see screenshot below). The corresponding fields are:
   the MDI values may be pasted into the GUI from e.g. an Matlab variable or a table. The MDI values can also be read-in
   directly from a json file (‘MDIjsonfile).
 
-![QUIQI_build](/assets/images/docs/QUIQI_build.png)
+![QUIQI_build](../assets/images/docs/QUIQI_build.png)
 
 ### QUIQI CHECK
 
@@ -43,12 +43,12 @@ multiple sets of MDI values are used for QUIQI (i.e. for the analysis of MRI dat
 volumes) all sets of MDI values are used for the polynomial fitting. Also, the maximum power of the polynomial fit can
 be set from the user interface (field ‘Fit power’).
 
-![QUIQI check 1](/assets/images/docs/QUIQI_check1.png)
+![QUIQI check 1](../assets/images/docs/QUIQI_check1.png)
 
 Without QUIQI:
 
-![QUIQI check 2](/assets/images/docs/QUIQI_check2.png)
+![QUIQI check 2](../assets/images/docs/QUIQI_check2.png)
 
 With QUIQI:
 
-![QUIQI check 3](/assets/images/docs/QUIQI_check3.png)
+![QUIQI check 3](../assets/images/docs/QUIQI_check3.png)

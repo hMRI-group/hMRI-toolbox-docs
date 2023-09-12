@@ -204,7 +204,7 @@ of this correction include diffusion effects on signal spoiling
 [Lutti2012](references.md#lutti2012), 
 [Callaghan2015b](references.md#callaghan2015b)).
 By default, this correction is disabled but can be enabled through
-the [toolbox customisation](defaultsAndCustomization#imperfect-rf-spoiling-correction).
+the [toolbox customisation](defaultsAndCustomization.md#imperfect-rf-spoiling-correction).
 
 A module that efficiently calculates the protocol-specific correction parameters required to account for imperfect
 spoiling may be found within the toolbox.
@@ -226,7 +226,7 @@ SNR). The toolbox provides several estimation methods including log-linear ordin
 ESTATICS method), log-linear weighted least squares (WLS; a little slower than ordinary least squares but accounts for
 the heteroskedasticity induced by the logarithm) and nonlinear least squares (NLLS; very slow but homoskedastic). For
 backwards compatibility OLS is used by default, but this can be changed in
-the [toolbox defaults file](defaultsAndCustomization#create-hmri-maps-parameters).
+the [toolbox defaults file](defaultsAndCustomization.md#create-hmri-maps-parameters).
 
 Using approximations of the signal equations for small repetition time (TR), the longitudinal relaxation rate (R1) and
 the A map (proportional to the proton density PD) can be efficiently estimated from the PDw and T1w
@@ -235,7 +235,7 @@ Using the additional assumption of a small excitation flip
 angle for the MTw data, the magnetisation transfer (MT) saturation can be estimated from the R1 and A maps and the MTw
 data ([Helms2008b](references.md#helms2008b)).
 By default, the small angle approximation is also assumed when computing R1 and A maps,
-but this can be changed in the [toolbox defaults file](defaultsAndCustomization#create-hmri-maps-parameters).
+but this can be changed in the [toolbox defaults file](defaultsAndCustomization.md#create-hmri-maps-parameters).
 
 The toolbox provides flexible correction methods for transmit (*fT*) and receive (*fR*) bias fields based on specific B1
 transmit and receive fields measurements or image processing methods. While *fT* influences the local apparent flip
@@ -270,13 +270,13 @@ The temporary folders are created at the same location as the `Results` director
 - B1mapCalc: to process B1 mapping data for [B1 transmit bias correction](#b1-transmit-bias-correction).
 - MPMCalc: to generate the quantitative maps R1, R2\*, PD and MT (or part of them, depending on the input).
 
-The default parameter `hmri_def.cleanup` can be [customized](defaultsAndCustomization#examples). By default, it is set
+The default parameter `hmri_def.cleanup` can be [customized](defaultsAndCustomization.md#examples). By default, it is set
 to `false`. All temporary directories will be deleted when the *Create hMRI maps* module has completed (recommended to
 save disk space). 
 
 !!! warning
 
-    Reminder for [toolbox customization](DefaultsAndCustomization): never modify the defaults files
+    Reminder for [toolbox customization](defaultsAndCustomization.md): never modify the defaults files
     located at the root of the `config` directory. Instead, use one of the template defaults files from `config/local` and
     save it under a meaningful name.
 
@@ -292,7 +292,7 @@ correction.*
 - `<firstPDfileName>_R1.[nii|json]` > Estimated longitudinal relaxation rate R1 map in s^-1
 - `<firstPDfileName>_R2s_<R2sMethod>.[nii|json]` > Estimated transversal relaxation rate R2\* map in s^-1 (ESTATICS),
   where `<R2sMethod>` is the R2\* fitting method (e.g. `OLS` or `WLS1`;
-  see [Create hMRI maps parameters](defaultsAndCustomization#create-hmri-maps-parameters)).
+  see [Create hMRI maps parameters](defaultsAndCustomization.md#create-hmri-maps-parameters)).
 
 #### `Results/Supplementary directory` > Description
 
@@ -320,13 +320,13 @@ the [Help](helpScripts.md#create-hmri-maps) section.
 
 Since acquisition parameters as well as processing parameters can be site- and scanner-dependent, the defaults must be
 customizable. This topic is extensively described in
-section ["Default parameters and customization of the toolbox"](defaultsAndCustomization).
+section ["Default parameters and customization of the toolbox"](defaultsAndCustomization.md).
 
 ## Example
 
 This example will take you step-by-step through the processing (map creation part) of the hMRI demo dataset
 available [here][hMRI-dataset-zip-to-download]. Unless specified, default settings should be left unchanged. See
-the [Debug tips & tricks](debugMetadataAndLogFiles#visual-inspection-of-the-created-maps) section for tips about
+the [Debug tips & tricks](debugMetadataAndLogFiles.md#visual-inspection-of-the-created-maps) section for tips about
 displaying the created maps for visual inspection.
 
 #### Set up and Run the Map Creation Module
@@ -361,7 +361,7 @@ everything is set up properly before running the processing on a whole group.
 Warning messages are only meant to make you aware of some of the processing steps and parameters used to generate the
 maps. And to give you a chance to decide whether these processing steps and parameters are definitely the right ones for
 the data you have at hand. Most warning and information messages are listed in
-the [Debug tips & tricks](debugMetadataAndLogFiles#processing-message-log-files) section, with a description of
+the [Debug tips & tricks](debugMetadataAndLogFiles.md#processing-message-log-files) section, with a description of
 potential implications and actions to be taken.
 
 #### Results Description
@@ -369,12 +369,12 @@ potential implications and actions to be taken.
 The four maps generated (MT, PT, R2s and R1) will be found in `derivative/Results`. These maps are the relevant ones for
 statistical analysis (see section on [Map Processing](processing.md)). In `derivative/Results/Supplementary` are stored the
 processing parameters and various additional images. Given the strong inter-scan motion factor in the dataset (affecting
-the MTw data, see details [here](HmriDemoDataset)), the MT map is strongly affected by artefacts. The R2\* map is not
+the MTw data, see details [here](hmriDemoDataset.md)), the MT map is strongly affected by artefacts. The R2\* map is not
 affected by such inter-scan motion, although including data input from all three contrasts (PDw, T1w and MTw). The PD
 and R1 maps do not rely on the MTw data and do not suffer from the same inhomogeneity. In addition, the PD map is
 corrected for RF sensitivity bias by applying the US algorithm.
 
-![Visual check of the results](/assets/images/docs/MapCreation_tutorial_check_maps_run02_RFsensUScorr.png)
+![Visual check of the results](../assets/images/docs/MapCreation_tutorial_check_maps_run02_RFsensUScorr.png)
 
 #### Alternative Processing - More Robust RF Sensitivity Bias Correction
 
@@ -405,7 +405,7 @@ the body coil RF sensitivity profile, which will be visible on the calculated PD
 improvement in terms of scan-rescan reproducibility and inter-scan motion insensitivity observed with the `Per contrast`
 option is still worth the hassle of acquiring and using such data.
 
-![Visual check of the results](/assets/images/docs/MapCreation_tutorial_check_maps_run03_RFsensmapscorr.png)
+![Visual check of the results](../assets/images/docs/MapCreation_tutorial_check_maps_run03_RFsensmapscorr.png)
 
 [hmri-defaults]: {{config.repo_url}}/blob/master/config/hmri_defaults.m
 [hmri-defaults-local]: {{config.repo_url}}/blob/master/config/local/hmri_defaults_local.m

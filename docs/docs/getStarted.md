@@ -22,13 +22,13 @@ the SPM root directory to your Matlab Path.
 ### Git
 
 For users who wish to keep their version of the hMRI Toolbox up-to-date with the repository, and developers who wish
-to [contribute](Contribute) to the Toolbox development, it is necessary to have Git installed. You can download
+to [contribute](../development/contribute.md) to the Toolbox development, it is necessary to have Git installed. You can download
 Git [here](https://git-scm.com/downloads). See the [Git documentation pages](https://git-scm.com/doc) to get started if
 you are new to Git.
 
 ## Install the Toolbox
 
-The installation procedure allows users to manage the hMRI Toolbox repository independently from their SPM installation,
+The installation procedure allows users to manage the hMRI Toolbox repository independently of their SPM installation,
 thanks to a [redirection script](#redirection-script). This is
 especially convenient when a version control system is used for SPM as well.
 The following steps describe how to get your own copy of the Toolbox in a directory of your choice and how to make it
@@ -37,9 +37,9 @@ available as an SPM tool.
 ### Download the latest release
 
 For users of the hMRI Toolbox who do not plan to modify the code by themselves, it is recommended to download the latest
-release from the [hMRI Releases](../releases) page. After download, unzip the compressed file and proceed with the
+release from the [hMRI Releases]({{config.repo_url}}/releases) page. After download, unzip the compressed file and proceed with the
 installation instructions below (skip the next section for developers). For information on the various releases and
-related changes, please refer to the [Releases wiki page](Releases).
+related changes, please refer to the [Releases page](releases.md).
 
 ### For developers and advanced users
 
@@ -53,8 +53,8 @@ $ git clone https://github.com/hMRI-group/hMRI-toolbox.git
 ```
 
 If you wish to further develop the toolbox, we recommend you fork the repository.
-For more details on forking and more development guidelines, please refer to the [Develop & Contribute](Contribute) wiki
-page.
+For more details on forking and more development guidelines, please refer to the 
+[Develop & Contribute](../development/contribute.md) page.
 
 ### Redirection script
 
@@ -93,8 +93,8 @@ also be found in the [`hMRI/examples`]({{config.repo_url}}/blob/master/examples)
 
 #### Available Examples:
 
-- [Map creation step-by-step example](mapCreation#example)
-- [Toolbox configuration and customization examples](defaultsAndCustomization#examples)
+- [Map creation step-by-step example](mapCreation.md#example)
+- [Toolbox configuration and customization examples](defaultsAndCustomization.md#examples)
 
 ## Help and resources
 

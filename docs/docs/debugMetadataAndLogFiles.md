@@ -75,19 +75,19 @@ See the help available in the SPM Batch GUI of the `Quality tools` module.
     Moreover, the PNG files saved don't show everything, and anomalies can still remain unnoticed.
 
 The following example illustrates typical rendering of the maps (processed from
-the [MPM example dataset](HmriDemoDataset),
-see [tutorial for map creation](MapCreation#example)) as rendered using SPM CheckReg and manual adjustment of the
+the [MPM example dataset](hmriDemoDataset.md),
+see [tutorial for map creation](mapCreation.md#example)) as rendered using SPM CheckReg and manual adjustment of the
 intensity ranges:
 
 <figure markdown>
-![Example display maps with appropriate scaling](/assets/images/docs/DebugMetadataAndLogFiles_MPM_example_dataset_display_MT_PD_R1_R2s.png)
+![Example display maps with appropriate scaling](../assets/images/docs/DebugMetadataAndLogFiles_MPM_example_dataset_display_MT_PD_R1_R2s.png)
 <figcaption>Example display maps with appropriate scaling</figcaption>
 </figure>
 
 The next example shows the same data displayed using the `Quality tools > Visual check` module:
 
 <figure markdown>
-![Visual check of the results](/assets/images/docs/MapCreation_tutorial_check_maps_run03_RFsensmapscorr.png)
+![Visual check of the results](../assets/images/docs/MapCreation_tutorial_check_maps_run03_RFsensmapscorr.png)
 <figcaption>Visual check of the results</figcaption>
 </figure>
 
@@ -167,7 +167,7 @@ Note that the same information can be read directly from the JSON file using a t
 
 ## Processing Parameter Log Files
 
-Several JSON files are logged during the [`Create hMRI maps`](MapCreation) module, containing mainly processing
+Several JSON files are logged during the [`Create hMRI maps`](mapCreation.md) module, containing mainly processing
 parameters. Below is the list of the files generated, stored in the `Results/Supplementary` directory. Depending on the
 processing options selected, some of them may not be generated.
 
