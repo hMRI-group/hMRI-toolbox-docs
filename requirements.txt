@@ -1,6 +1,5 @@
 mkdocs-material>=9.1.12
 mkdocs-video
-mkdocs-bibtex
 mkdocs-macros-plugin
 codespell
 pyspelling

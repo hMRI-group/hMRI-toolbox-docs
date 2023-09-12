@@ -1,6 +1,4 @@
-# Map Creation
-
-## Introduction
+# Quantitative Map Creation
 
 The `Create hMRI maps` module computes quantitative as well as semi-quantitative estimates of R2\*, R1, PD and MT from
 unprocessed multi-echo T1-, PD- and MT-weighted RF-spoiled gradient echo
@@ -138,7 +136,11 @@ The option of using no RF sensitivity bias correction (option 1) is not recommen
 
 ### Receive Field Sensitivity Measurements
 
-#### Body and Head Coil Measurements ([Papp2016](references.md#papp2016))
+#### Body and Head Coil Measurements
+
+!!! info
+
+    Please see [Papp2016](references.md#papp2016).
 
 The underlying assumption of this method is that the receive field sensitivity of the body coil is much flatter than
 that of an array head coil.
@@ -169,7 +171,11 @@ field-inhomogeneities of the body coil.
 Because of this, this method is followed by an application of the Unified Segmentation approach to minimise the residual
 modulation due to the body coil RF sensitivity field.
 
-#### Only Head Coil Measurements ([Balbastre2022](references.md#balbastre2022))
+#### Only Head Coil Measurements
+
+!!! info
+
+    Please see [Balbastre2022](references.md#balbastre2022).
 
 In cases where body coil images are not available or cannot be measured (e.g. at 7T where many scanners do not have a
 body coil), it is still possible to correct for the inter-scan variation of the sensitivity modulation.
@@ -280,10 +286,10 @@ save disk space).
     located at the root of the `config` directory. Instead, use one of the template defaults files from `config/local` and
     save it under a meaningful name.
 
-### Example of outputs from the *Create hMRI maps* module
+### Example Outputs from the *Create hMRI maps* Module
 
-*Output files from the Create hMRI maps module using the SE/STE B1 mapping and per-contrast RF sensitivity bias
-correction.*
+Output files from the Create hMRI maps module using the SE/STE B1 mapping and per-contrast RF sensitivity bias
+correction.
 
 #### `Results directory` > Description
 
@@ -311,7 +317,7 @@ correction.*
 - `<firstPDfileName>_T1w_<R2sMethod>fit_TEzero.[nii|json]` > T1w echoes extrapolated to TE=0, where `<R2sMethod>` is the
   R2\* fitting method
 
-## Batch options
+## Batch Options
 
 Help on batch options is automatically generated from the toolbox config files. The information is collected in
 the [Help](helpScripts.md#create-hmri-maps) section.

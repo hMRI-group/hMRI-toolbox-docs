@@ -44,7 +44,7 @@ theme:
     - content.code.copy
     - content.tabs.link
     - content.tooltips
-    - content.action.edit
+#    - content.action.edit
     - navigation.footer
     - navigation.indexes
     - navigation.sections
@@ -55,7 +55,6 @@ theme:
 nav:
   - Home: index.md
   - Information: information.md
-  - Quick Start: quickstart.md
   - Docs:
       - Home: docs/index.md
       - Getting Started: docs/getStarted.md
@@ -65,12 +64,12 @@ nav:
       - Debug Metadata and Log Files: docs/debugMetadataAndLogFiles.md
       - Defaults and Customization: docs/defaultsAndCustomization.md
       - Help Scripts: docs/helpScripts.md
-      - Hmri Demo Dataset: docs/hmriDemoDataset.md
-      - Map Creation: docs/mapCreation.md
-      - Processing: docs/processing.md
+      - hMRI Demo Dataset: docs/hmriDemoDataset.md
+      - Quantitative Map Creation: docs/mapCreation.md
+      - Spatial Processing: docs/processing.md
       - QUIQI: docs/QUIQI.md
-      - References: docs/references.md
       - Releases: docs/releases.md
+      - References: docs/references.md
   - Development:
       - Home: development/index.md
       - Unit Testing: development/unit_tests.md
@@ -78,7 +77,6 @@ nav:
       - Contributing: development/contribute.md
       - API Reference: development/api.md
   - Contact: contact.md
-#  - API: API/api.md
 
 markdown_extensions:
   - abbr
