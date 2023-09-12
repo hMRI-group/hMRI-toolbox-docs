@@ -2,7 +2,29 @@
 
 Sources for the hMRI Toolbox website
 
-## Helpful Information
+## Virtual Environment
+
+Ensure you have Python 3 and the `venv` package. Create the environment by using
+
+```shell
+python3 -m venv venv
+```
+
+Activate the virtual environment with
+
+```shell
+source venv/bin/activate
+```
+
+Install all required packages
+
+```shell
+pip install -r requirements.txt
+```
+
+Next time, you only need to activate the virtual environment again.
+
+## Tips
 
 - If you need to insert a link to the GitHub repository of the Toolbox, don't use `../blob/master/CHANGELOG.md` like before!
   Instead, use `{{repo_url}}/blob/master/CHANGELOG.md`
