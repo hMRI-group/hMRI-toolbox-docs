@@ -1,57 +1,19 @@
 # Contributing to the hMRI Toolbox
 
-An inspirational guide to contributing to open-source projects can be found [here](https://opensource.guide/how-to-contribute/).
-
 Contributing to the hMRI Toolbox can be done in many ways and at many levels,
-from users to experienced developers.
+from users to experienced developers. If you plan to contribute as a developer,
+an inspirational guide on how to contribute to open-source projects can be found [here](https://opensource.guide/how-to-contribute/).
 
-Contributing involves much more than coding!
+However, contributing involves much more than just coding!
 It includes reporting bugs and discussing issues,
 supporting other users, contributing documentation and examples,
 making suggestions and writing new feature proposals,
-reviewing proposals, issues and pull requests...
+reviewing proposals, issues and pull requests.
 
 Contributing code by implementing bug fixes and new features is great,
 but contributing any of these other aspects will be hugely appreciated :)!
 
-## Introduction and General Guidelines
-
-Welcome to the hMRI Toolbox!
-
-The hMRI Toolbox was made publicly available in June 2018.
-Until then, its development was carried out by a limited number of developers among whom good communication and good humour prevented any conflict.
-We hope that this will continue, and so we expect communication, mutual respect and good humour to be values held by all contributors.
-
-The guidelines provided here are a suggestion of how to proceed, and are expected to evolve as more users and contributors get involved.
-Feedback and suggestions on these guidelines are also welcome!
-
-Useful information is already available:
-
-- in the [mailing list archive](#mailing-list)
-- in the [issue tracking system](#issue-tracking-system)
-
-If you cannot find the expected information there, you can either post a new question on the [mailing list](#mailing-list) or open an [issue](#issue-tracking-system).
-
-If you believe you have uncovered a bug, [opening an issue](#issue-tracking-system) is the recommended way to proceed.
-
-If you have a solution to an issue or a new feature enhancing the toolbox, you may want to [fork the repository](#step-2-fork) and later [create a pull request](#pull-requests).
-
-These topics are described in more detail below.
-
-## Mailing list
-
-If you have questions about the hMRI toolbox,
-or want to contribute by answering other users' questions,
-or wish to keep posted about what's going on with the hMRI toolbox, [join the mailing list][mailing-list-home]!
-
-Go to the [hMRI Toolbox mailing list home page][mailing-list-home] to subscribe, unsubscribe, manage your account and browse the archives.
-
-Once you have subscribed to the mailing list, you can send emails to HMRI-TOOLBOX@JISCMAIL.AC.UK
-with your questions and/or contribute by answering questions and helping out other users.
-
-You can also create a password from the same [home page][mailing-list-home] in order to access and search the mailing list archives.
-
-## Issue tracking
+## Issue Tracking
 
 There are several ways you can contribute issues:
 
@@ -61,10 +23,11 @@ There are several ways you can contribute issues:
   (e.g. a test case demonstrating a bug), or providing suggestions on how to address the issue.
 - by tidying up issues: link duplicate issues, suggest new issue labels, go through open issues
   and suggest closing old ones, ask clarifying questions on recently opened issues to move the discussion forward.
-- by helping to resolve an issue: by opening a [pull request](#pull-requests) with the modified code that resolves the issue.
+- by helping to resolve an issue: by opening a [pull request](#developments-and-pull-requests) 
+  with the modified code that resolves the issue.
 
 When opening an issue, first check whether an issue on the same or related topic already exists.
-If not, go ahead! but make sure you include the following information:
+If not, go ahead, but make sure you include the following information:
 
 - description of the issue (obviously!): as complete as possible, including error messages,
   code snippets, type of input, screenshot of image output, options...
@@ -133,7 +96,6 @@ Create a new (development) branch with a name related to the bug fix or feature 
 $ git branch myBugFixIssue41
 $ git checkout myBugFixIssue41
 ```
-
 
 ## Developments and Pull Requests
 
