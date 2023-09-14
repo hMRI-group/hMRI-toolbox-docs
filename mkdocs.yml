@@ -44,7 +44,7 @@ theme:
     - content.code.copy
     - content.tabs.link
     - content.tooltips
-#    - content.action.edit
+#    - content.action.edit # We don't want direct edits but rather real PRs that can be reviewed.
     - navigation.footer
     - navigation.indexes
     - navigation.sections
@@ -72,9 +72,9 @@ nav:
       - References: docs/references.md
   - Development:
       - Home: development/index.md
+      - Contributing: development/contribute.md
       - Unit Testing: development/unit_tests.md
       - Releases: development/releases.md
-      - Contributing: development/contribute.md
       - API Reference: development/api.md
   - Contact: contact.md
 
@@ -125,10 +125,13 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/hMRI-group
+      name: Repository on GitHub
     - icon: fontawesome/solid/comment
-      link: https://matrix.to/#/#hMRI-toolbox:gitter.im
+      link: https://app.gitter.im/#/room/#hMRI-toolbox:gitter.im
+      name: Join the chatroom
     - icon: mpg
       link: https://www.cbs.mpg.de/departments/neurophysics/software/hmri-toolbox
+      name: Institute hMRI Toolbox page
 
 extra_javascript:
   - assets/javascripts/mathjax.js
