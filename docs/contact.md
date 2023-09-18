@@ -15,8 +15,8 @@ developers. It offers a space to share ideas, ask questions, and interact live w
 
 ## Mailing List
 
-Stay updated with the latest updates and discussions through our dedicated mailing list created for hMRI Toolbox users. Registered
-users can access the message archive on the list home page to catch up on previous discussions.
+Stay updated with the latest changes and discussions through our dedicated mailing list created for hMRI Toolbox users.
+Registered users can access the message archive on the list home page to catch up on previous discussions.
 
 [Register for the mailing list](https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=HMRI-TOOLBOX&A=1){ .md-button }
 

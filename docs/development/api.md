@@ -2,6 +2,10 @@
 title: API Reference
 ---
 
+Below is only an example of what automatically generated function documentation could look like.
+However, to implement a tool that does the automatic extraction, it requires first that function comments
+within the hMRI Toolbox are consistent and follow a specific format that can be parsed.
+
 ## Function `hmri_calc_R1`
 Calculate R1 map from PDw and T1w data.
 

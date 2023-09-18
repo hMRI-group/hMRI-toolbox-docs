@@ -1,13 +1,20 @@
-# hMRI Toolbox Docs
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/hMRI-group/hMRI-toolbox-docs/blob/main/docs/assets/images/Banner_Dark%40512px.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/hMRI-group/hMRI-toolbox-docs/blob/main/docs/assets/images/Banner_Light%40512px.png">
+  <img alt="hMRI Toolbox Banner" src="https://github.com/hMRI-group/hMRI-toolbox-docs/blob/main/docs/assets/images/Banner_Light%40512px.png">
+</picture>
 
-Sources for the hMRI Toolbox website
+# hMRI Toolbox Documentation Website
+
+This repository contains the sources for the (new) hMRI Toolbox website.
+This website is based on [MkDocs](https://www.mkdocs.org/) with the
+[mkdocs-material](https://squidfunk.github.io/mkdocs-material/) theme, and it is built and deployed automatically
+on every push or commit to the `main` branch using GitHub's actions.
 
 # Editing and Building the site locally
 
 ## Setup and Virtual Environment
 
-This website is based on [MkDocs](https://www.mkdocs.org/) with the 
-[mkdocs-material](https://squidfunk.github.io/mkdocs-material/) theme.
 MkDocs uses Python to build a static website from Markdown files. Therefore, 
 ensure you have Python 3 and the `venv` package. 
 

@@ -37,7 +37,7 @@ this direction.
 The development of the hMRI Toolbox is an international collaborative effort including the following sites and
 developers:
 
-- Luke Edwards, Baris Evren Ugurcan, Patrick Scheibe, Enrico Reimer, Tobias Leutritz, Nikolaus Weiskopf (Max Planck
+- Luke Edwards, Baris Evren Ugurcan, Kornelius Podranski, Enrico Reimer, Tobias Leutritz, Nikolaus Weiskopf (Max Planck
   Institute for Human Cognitive and Brain Sciences, Leipzig, Germany)
 - Evelyne Balteau, Christophe Phillips (University of Liege, Liege, Belgium)
 - Siawoosh Mohammadi (Medical Center Hamburg-Eppendorf, Hamburg, Germany)
@@ -51,7 +51,7 @@ developers:
 
 ## Scientific Publications and Posters
 
-For a reference on the scientific background, methods and concepts please use this paper
+For a reference on the scientific background, methods and concepts, please use this paper
 ([Tabelow2019](docs/references.md#tabelow2019); also available as a pre-print paper)
 and cite it when publishing results compiled with the hMRI Toolbox. A conference poster is also available here.
 
