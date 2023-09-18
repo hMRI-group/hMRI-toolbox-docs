@@ -4,7 +4,7 @@ These notes describe how to release a new version. They are meant to clarify the
 relation to the current master branch. The process described is applied in a clean copy of the repository, after all bug
 fixes and changes have been accepted and merged into the master branch for a new release.
 
-- Run all unit tests - under development
+- Run all unit tests
 - Update [CHANGELOG.md][changelog-md] to include the new version number, the release date and a summary of the changes +
   Commit
 - Update [version.txt][version-txt] (e.g. from `v0.1.2-dev` to `v0.1.2`) + Commit
@@ -14,6 +14,7 @@ fixes and changes have been accepted and merged into the master branch for a new
 - Push all commits to the public repository.
 
 !!! warning
+
     **Before** release, the update of the version number may include more than simply removing the `-dev` suffix. For
     example, if the new release includes a major change, the update could go from `v0.1.2-dev` to `v1.0.0`. *After* release,
     the update of the version number will always increment the patch number only and append the `-dev` suffix.

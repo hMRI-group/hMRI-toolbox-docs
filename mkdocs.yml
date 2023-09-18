@@ -75,7 +75,7 @@ nav:
       - Contributing: development/contribute.md
       - Unit Testing: development/unit_tests.md
       - Releases: development/releases.md
-      - API Reference: development/api.md
+#      - API Reference: development/api.md # Would need further work to extract the API automatically from the hMRI Toolbox
   - Contact: contact.md
 
 markdown_extensions:
