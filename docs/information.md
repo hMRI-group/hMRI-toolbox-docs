@@ -52,8 +52,9 @@ developers:
 ## Scientific Publications and Posters
 
 For a reference on the scientific background, methods and concepts, please use this paper
-([Tabelow2019](docs/references.md#tabelow2019); also available as a pre-print paper)
-and cite it when publishing results compiled with the hMRI Toolbox. A conference poster is also available here.
+([Tabelow2019](docs/references.md#tabelow2019); also available as a [pre-print paper](http://dx.doi.org/10.20347/WIAS.PREPRINT.2527))
+and cite it when publishing results compiled with the hMRI Toolbox.
+A conference poster is also available [here](https://orbi.uliege.be/handle/2268/225763).
 
 ## Acknowledgments and Funding
 
