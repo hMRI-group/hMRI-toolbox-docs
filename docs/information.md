@@ -69,7 +69,8 @@ and a conference poster is available [here](https://orbi.uliege.be/handle/2268/2
 The official hMRI Toolbox artwork is available for download.
 It includes the banner and variations of the logo both for a dark and light background.
 Should you wish to incorporate our artwork into your own publication, we invite you to 
-[download a ZIP](assets/images/hmri_artwork.png) file which contains all variations in different formats.
+[download a ZIP](https://github.com/hMRI-group/hMRI-toolbox-docs/releases/download/v2023.0/hMRI-Toolbox-Artwork.zip)
+file which contains all variations in different formats.
 
 ![hMRI Toolbox Artwork](assets/images/hmri_artwork.png)
 
