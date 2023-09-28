@@ -15,7 +15,7 @@ This website is based on [MkDocs](https://www.mkdocs.org/) with the
 on every push or commit to the `main` branch using GitHub's actions.
 
 Therefore, the normal workflow should be to create a branch from `main` when you work on adding or fixing content.
-In the PR you can then check if the site builds without errors before merging your changes.
+Make a pull request, where you can then check if the site builds without errors before merging your changes.
 However, it's highly recommended to preview the site locally because it's faster and setting up the environment for
 preview is easy.
 
@@ -65,7 +65,7 @@ This will serve the site on `http://127.0.0.1:8000` and you can preview it in yo
 # Content and Formatting Tips
 
 - If you need to insert a link to the GitHub repository of the Toolbox, don't use `../blob/master/CHANGELOG.md` like in
-  the Wiki before! Instead, use `{{repo_url}}/blob/master/CHANGELOG.md` which injects the right repo URL automatically.
+  the Wiki before! Instead, use `{{config.repo_url}}/blob/master/CHANGELOG.md` which injects the right repo URL automatically.
 - If you write `R2*` in Markdown, remember that star means cursive. You have to use `R2\*` instead!
 - In every kind of title or section heading, we use ["Title Case"](https://munch.studio/typography-101-capitalisation-guide) consistently
 

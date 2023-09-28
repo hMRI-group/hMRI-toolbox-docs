@@ -49,12 +49,30 @@ developers:
 - Lars Ruthotto (Emory University, Atlanta, GA, United States)
 - Gabriel Ziegler (Otto-von-Guericke-University Magdeburg, Magdeburg, Germany)
 
-## Scientific Publications and Posters
+## Scientific Publications and How to Cite
 
-For a reference on the scientific background, methods and concepts, please use this paper
-([Tabelow2019](docs/references.md#tabelow2019); also available as a [pre-print paper](http://dx.doi.org/10.20347/WIAS.PREPRINT.2527))
-and cite it when publishing results compiled with the hMRI Toolbox.
-A conference poster is also available [here](https://orbi.uliege.be/handle/2268/225763).
+For a reference on the scientific background, methods and concepts, or if you want to cite the hMRI Toolbox when 
+publishing results, please use the paper [Tabelow et al., 2019](docs/references.md#tabelow2019):
+
+!!!info
+
+    **Tabelow K**, Balteau E, Ashburner J, Callaghan MF, Draganski B, Helms G, Kherif F, Leutritz T, Lutti A, Phillips C,
+    Reimer E, Ruthotto L, Seif M, Weiskopf N, Ziegler G, Mohammadi S (**2019**) hMRI – A toolbox for quantitative MRI in
+    neuroscience and clinical research.
+    *Neuroimage.* [doi:10.1016/j.neuroimage.2019.01.029](https://doi.org/10.1016/j.neuroimage.2019.01.029).
+
+This publication is also available as a [pre-print paper](http://dx.doi.org/10.20347/WIAS.PREPRINT.2527)
+and a conference poster is available [here](https://orbi.uliege.be/handle/2268/225763).
+
+### Artwork
+
+The official hMRI Toolbox artwork is available for download.
+It includes the banner and variations of the logo both for a dark and light background.
+Should you wish to incorporate our artwork into your own publication, we invite you to 
+[download a ZIP](https://github.com/hMRI-group/hMRI-toolbox-docs/releases/download/v2023.0/hMRI-Toolbox-Artwork.zip)
+file which contains all variations in different formats.
+
+![hMRI Toolbox Artwork](assets/images/hmri_artwork.png)
 
 ## Acknowledgments and Funding
 
