@@ -1,0 +1,2189 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation of the hMRI Toolbox">
+      
+      
+        <meta name="author" content="hMRI Toolbox Developers">
+      
+      
+      
+        <link rel="prev" href="../hmriDemoDataset/">
+      
+      
+        <link rel="next" href="../processing/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
+    
+    
+      
+        <title>Quantitative Map Creation - hMRI Toolbox Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d451bc0e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+<link rel="stylesheet" href="../../assets/stylesheets/custom.f7ec4df2.min.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quantitative-map-creation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="hMRI Toolbox Documentation" class="md-header__button md-logo" aria-label="hMRI Toolbox Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/Logo_Dark_32x32@128x.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hMRI Toolbox Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quantitative Map Creation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hMRI-group/hMRI-toolbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MRI-group/hMRI-toolbox
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../information/" class="md-tabs__link">
+        
+  
+    
+  
+  Information
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  Docs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/" class="md-tabs__link">
+          
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hMRI Toolbox Documentation" class="md-nav__button md-logo" aria-label="hMRI Toolbox Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/Logo_Dark_32x32@128x.png" alt="logo">
+
+    </a>
+    hMRI Toolbox Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hMRI-group/hMRI-toolbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MRI-group/hMRI-toolbox
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../information/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Information
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Docs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getStarted/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadataLibrary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON Metadata and DICOM to NIfTI Conversion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autoReorient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatic Reorientation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BIDS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BIDS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugMetadataAndLogFiles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips & tricks for Processing and Debugging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../defaultsAndCustomization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Defaults and Customization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpScripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Help Scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hmriDemoDataset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    hMRI Demo Dataset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quantitative Map Creation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quantitative Map Creation
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#b1-transmit-bias-correction" class="md-nav__link">
+    B1+ (Transmit) Bias Correction
+  </a>
+  
+    <nav class="md-nav" aria-label="B1+ (Transmit) Bias Correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-3d_epi" class="md-nav__link">
+    1. 3D_EPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-3d_afi" class="md-nav__link">
+    2. 3D_AFI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tfl_b1_map" class="md-nav__link">
+    3. tfl_b1_map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-rf_map" class="md-nav__link">
+    4. rf_map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-dam_b1_map" class="md-nav__link">
+    5. DAM_b1_map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pre-processed-b1" class="md-nav__link">
+    6. pre-processed B1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-unicort" class="md-nav__link">
+    7. UNICORT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-no_b1_correction" class="md-nav__link">
+    8. no_B1_correction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rf-sensitivity-bias-correction" class="md-nav__link">
+    RF Sensitivity Bias Correction
+  </a>
+  
+    <nav class="md-nav" aria-label="RF Sensitivity Bias Correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receive-field-sensitivity-measurements" class="md-nav__link">
+    Receive Field Sensitivity Measurements
+  </a>
+  
+    <nav class="md-nav" aria-label="Receive Field Sensitivity Measurements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#body-and-head-coil-measurements" class="md-nav__link">
+    Body and Head Coil Measurements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#only-head-coil-measurements" class="md-nav__link">
+    Only Head Coil Measurements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-driven-receive-field-estimation" class="md-nav__link">
+    Data Driven Receive Field Estimation.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imperfect-spoiling-correction" class="md-nav__link">
+    Imperfect Spoiling Correction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpm-model-to-estimate-r2-pd-r1-mt-maps" class="md-nav__link">
+    MPM Model to Estimate R2*, PD, R1 &amp; MT Maps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-files" class="md-nav__link">
+    Output Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleanup-options-and-temporary-directories" class="md-nav__link">
+    Cleanup Options and Temporary Directories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-outputs-from-the-create-hmri-maps-module" class="md-nav__link">
+    Example Outputs from the Create hMRI maps Module
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Outputs from the Create hMRI maps Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#results-directory-description" class="md-nav__link">
+    Results directory &gt; Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultssupplementary-directory-description" class="md-nav__link">
+    Results/Supplementary directory &gt; Description
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch-options" class="md-nav__link">
+    Batch Options
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-local-defaults" class="md-nav__link">
+    Setting up local defaults
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+    <nav class="md-nav" aria-label="Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-and-run-the-map-creation-module" class="md-nav__link">
+    Set up and Run the Map Creation Module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note-on-pop-up-messages-and-warnings" class="md-nav__link">
+    Note on Pop-up Messages and Warnings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-description" class="md-nav__link">
+    Results Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-processing-more-robust-rf-sensitivity-bias-correction" class="md-nav__link">
+    Alternative Processing - More Robust RF Sensitivity Bias Correction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#better-results-description" class="md-nav__link">
+    Better Results Description
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatial Processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUIQI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QUIQI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Releases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../development/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Development
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/contribute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/unit_tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/releases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Releases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#b1-transmit-bias-correction" class="md-nav__link">
+    B1+ (Transmit) Bias Correction
+  </a>
+  
+    <nav class="md-nav" aria-label="B1+ (Transmit) Bias Correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-3d_epi" class="md-nav__link">
+    1. 3D_EPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-3d_afi" class="md-nav__link">
+    2. 3D_AFI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tfl_b1_map" class="md-nav__link">
+    3. tfl_b1_map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-rf_map" class="md-nav__link">
+    4. rf_map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-dam_b1_map" class="md-nav__link">
+    5. DAM_b1_map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pre-processed-b1" class="md-nav__link">
+    6. pre-processed B1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-unicort" class="md-nav__link">
+    7. UNICORT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-no_b1_correction" class="md-nav__link">
+    8. no_B1_correction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rf-sensitivity-bias-correction" class="md-nav__link">
+    RF Sensitivity Bias Correction
+  </a>
+  
+    <nav class="md-nav" aria-label="RF Sensitivity Bias Correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receive-field-sensitivity-measurements" class="md-nav__link">
+    Receive Field Sensitivity Measurements
+  </a>
+  
+    <nav class="md-nav" aria-label="Receive Field Sensitivity Measurements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#body-and-head-coil-measurements" class="md-nav__link">
+    Body and Head Coil Measurements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#only-head-coil-measurements" class="md-nav__link">
+    Only Head Coil Measurements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-driven-receive-field-estimation" class="md-nav__link">
+    Data Driven Receive Field Estimation.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imperfect-spoiling-correction" class="md-nav__link">
+    Imperfect Spoiling Correction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpm-model-to-estimate-r2-pd-r1-mt-maps" class="md-nav__link">
+    MPM Model to Estimate R2*, PD, R1 &amp; MT Maps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-files" class="md-nav__link">
+    Output Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleanup-options-and-temporary-directories" class="md-nav__link">
+    Cleanup Options and Temporary Directories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-outputs-from-the-create-hmri-maps-module" class="md-nav__link">
+    Example Outputs from the Create hMRI maps Module
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Outputs from the Create hMRI maps Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#results-directory-description" class="md-nav__link">
+    Results directory &gt; Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultssupplementary-directory-description" class="md-nav__link">
+    Results/Supplementary directory &gt; Description
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch-options" class="md-nav__link">
+    Batch Options
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-local-defaults" class="md-nav__link">
+    Setting up local defaults
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+    <nav class="md-nav" aria-label="Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-and-run-the-map-creation-module" class="md-nav__link">
+    Set up and Run the Map Creation Module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note-on-pop-up-messages-and-warnings" class="md-nav__link">
+    Note on Pop-up Messages and Warnings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-description" class="md-nav__link">
+    Results Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-processing-more-robust-rf-sensitivity-bias-correction" class="md-nav__link">
+    Alternative Processing - More Robust RF Sensitivity Bias Correction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#better-results-description" class="md-nav__link">
+    Better Results Description
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<div><h1 id="quantitative-map-creation">Quantitative Map Creation<a class="headerlink" href="#quantitative-map-creation" title="Permanent link">¶</a></h1>
+<p>The <code>Create hMRI maps</code> module computes quantitative as well as semi-quantitative estimates of R2*, R1, PD and MT from
+unprocessed multi-echo T1-, PD- and MT-weighted RF-spoiled gradient echo
+acquisitions
+(<a href="../references/#helms2008b">Helms2008b</a>;
+<a href="../references/#helms2008a">Helms2008a</a>;
+<a href="../references/#weiskopf2013">Weiskopf2013</a>;
+<a href="../references/#weiskopf2014">Weiskopf2014</a>).
+The Map creation module corrects the qMRI estimates for spatial <a href="#rf-sensitivity-bias-correction">receive</a>
+and <a href="#b1-transmit-bias-correction">transmit</a> field inhomogeneities based on additional reference data, if
+available
+(<a href="../references/#lutti2010">Lutti2010</a>;
+<a href="../references/#lutti2012">Lutti2012</a>;
+<a href="../references/#papp2016">Papp2016</a>) or using image processing
+methods (<a href="../references/#weiskopf2013">Weiskopf2013</a>; <a href="../references/#weiskopf2011">Weiskopf2011</a>).</p>
+<h2 id="b1-transmit-bias-correction">B1+ (Transmit) Bias Correction<a class="headerlink" href="#b1-transmit-bias-correction" title="Permanent link">¶</a></h2>
+<p>The map creation module includes the determination of B1 transmit bias field maps
+(<em>fT</em> expressed in p.u. of the nominal flip angle) for transmit bias correction
+of the quantitative data. Several methods are implemented. Depending on the choice of the
+specific method the GUI requires the user to provide adequate input files, which are described below.
+For details of the implemented methods we refer the reader to the respective original publications.</p>
+<h3 id="1-3d_epi">1. 3D_EPI<a class="headerlink" href="#1-3d_epi" title="Permanent link">¶</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>EPI spin-echo (SE)/stimulated-echo (STE)
+method (<a href="../references/#lutti2010">Lutti2010</a>, <a href="../references/#lutti2012">Lutti2012</a>).</p>
+</div>
+<p>All consecutive pairs of SE/STE images corresponding to the different flip angle nominal values of the SE/STE RF
+pulses must be loaded as <strong>B1 input</strong>. B0 field mapping images must also be provided for the correction of
+distortions in the EPI images. Both magnitude images and the pre-subtracted phase image must be selected, in that
+order, as <strong>B0 input</strong>.</p>
+<h3 id="2-3d_afi">2. 3D_AFI<a class="headerlink" href="#2-3d_afi" title="Permanent link">¶</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Actual Flip Angle Imaging (AFI) method (<a href="../references/#yarnykh2007">Yarnykh2007</a>).</p>
+</div>
+<p>A pair of magnitude images acquired with two different repetition times (TR) must be loaded as <strong>B1 input</strong>. The hMRI
+Toolbox then calculates the B1 transmit bias field map as described in <a href="../references/#yarnykh2007">Yarnykh2007</a>.</p>
+<h3 id="3-tfl_b1_map">3. tfl_b1_map<a class="headerlink" href="#3-tfl_b1_map" title="Permanent link">¶</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>TFL B1 mapping (<a href="../references/#chung2010">Chung2010</a>).</p>
+</div>
+<p>For this method, the batch interface requires a pair of images (one anatomical image and one flip angle map, in that
+order) from a service sequence by Siemens (version available from VE11 on) based on a turbo flash (TFL) sequence with
+and without a pre-saturation pulse (<a href="../references/#chung2010">Chung2010</a>). The flip angle map used as input contains the
+measured
+flip angle multiplied by 10. After rescaling (p.u.) and smoothing, the output <em>fT</em> map is ready to be used for B1
+transmit bias correction.</p>
+<h3 id="4-rf_map">4. rf_map<a class="headerlink" href="#4-rf_map" title="Permanent link">¶</a></h3>
+<p>The batch interface requires a pair of images output from a service sequence by Siemens (Erlangen, Germany; one
+anatomical image and one pre-processed B1 map, in that order) based on the acquisition of a spin-echo/stimulated echo
+as used for the 3D_EPI method above (<a href="../references/#lutti2010">Lutti2010</a>). Rescaling to an <em>fT</em> map (p.u.) suitable
+for B1
+transmit bias correction from the signal intensity of the preprocessed map from the scanner, <em>S</em>, using the nominal
+flip angle <em>alpha</em> is performed in the toolbox according to the following formula: <em>fT</em> = ((<em>S</em> - 2048) × 180 ×
+100)/(2048 × <em>alpha</em>) (source: Siemens Customer Services Knowledge Base, ID: 15480, “Evaluation of RF field (B1)
+Inhomogeneity with service sequence RF_map”).</p>
+<h3 id="5-dam_b1_map">5. DAM_b1_map<a class="headerlink" href="#5-dam_b1_map" title="Permanent link">¶</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Double Angle Mapping B1 map.</p>
+</div>
+<p>The batch interface requires a pair of images, the first with flip angle 2*alpha and the second with flip angle
+alpha (e.g. 120°/60°).
+This method can also be used for Saturated Double Angle Mapping (SDAM) data.</p>
+<h3 id="6-pre-processed-b1">6. pre-processed B1<a class="headerlink" href="#6-pre-processed-b1" title="Permanent link">¶</a></h3>
+<p>Any B1 transmit bias field map precalculated using one of the above methods or another method can be used as
+pre-processed <strong>B1 input</strong>. The user must select one anatomical reference (for registration) and one B1 map, in that
+order. The anatomical reference is typically a magnitude image from the B1 mapping dataset, and must be in the same
+space as the B1 transmit bias field map. If the B1 map is not expressed in percent units (p.u.) of the nominal flip
+angle, a scaling factor can be introduced to bring it to the right units.
+NOTE: <a href="https://bids-specification.readthedocs.io/en/latest/glossary.html#tb1map-suffixes">BIDS-compatible B1 maps</a>
+have a “B1” value of 1 where the nominal flip angle is achieved. For such B1 map, a scaling factor of 100 will be
+needed.</p>
+<h3 id="7-unicort">7. UNICORT<a class="headerlink" href="#7-unicort" title="Permanent link">¶</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Data driven estimation of the B1 transmit bias field map using the UNICORT approach (<a href="../references/#weiskopf2011">Weiskopf2011</a>).</p>
+</div>
+<p>If none of the above-mentioned methods applies because no appropriate B1 transmit bias field mapping data were
+acquired, the UNICORT option is recommended to remove the transmit field bias in the R1 map and estimate the B1
+transmit bias field map from the qMRI data. UNICORT parameters may need tuning to the specific RF transmit coil used
+as it was developed and optimised for Siemens Trio.  <br>
+Most importantly, the regularisation parameters must be adapted. The settings will depend on how much non-uniformity
+there is in the data. If there is no non-uniformity, then the regularisation should be high. If there is lots, then
+there should be less regularisation.</p>
+<h3 id="8-no_b1_correction">8. no_B1_correction<a class="headerlink" href="#8-no_b1_correction" title="Permanent link">¶</a></h3>
+<p>With this option, no correction for transmit inhomogeneities is applied, i.e., <em>fT</em> = 1.</p>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">¶</a></h3>
+<p>For each B1 mapping protocol (1-6), one <code>*_B1map</code> (in p.u.) and one <code>*_B1ref</code> (for anatomical reference) file is created
+and saved in the <code>Results/Supplementary</code> directory.
+The output images are associated with JSON metadata including the type of B1 map processed and the processing
+parameters.
+For UNICORT, only the <code>*_B1map</code> in p.u. is created (in the same space as the qMRI maps) with no anatomical reference.
+Default acquisition and processing parameters for the UNICORT, 3D_EPI and 3D_AFI methods can be customised at this
+point by providing the module with a customised configuration file (see
+section <a href="../defaultsAndCustomization/">Default parameters and customization of the toolbox</a> for examples and guidelines).</p>
+<p>Except for UNICORT, where the B1 transmit bias field directly derived from the qMRI data, and the <code>no_B1_correction</code>
+option, where no anatomical reference is needed, the hMRI Toolbox co-registers the anatomical image with the multi-echo
+RF-spoiled gradient echo data before applying the B1 transmit bias correction.</p>
+<h2 id="rf-sensitivity-bias-correction">RF Sensitivity Bias Correction<a class="headerlink" href="#rf-sensitivity-bias-correction" title="Permanent link">¶</a></h2>
+<p>Four options are available to address RF sensitivity bias within the <code>Create hMRI maps</code> module: (1) no correction, (2)
+Unified Segmentation (US), (3) use one measured RF sensitivity map, (4) use three measured RF sensitivity maps, one per
+contrast.
+While options (2) and (3) assume that the sensitivity profile is consistent between contrasts (i.e. small inter-contrast
+subject movement), option (4) accounts for inter-contrast variation in RF sensitivity profile due to larger subject
+motion (<a href="../references/#papp2016">Papp2016</a>,<a href="../references/#balbastre2022">Balbastre2022</a>).
+Measured RF sensitivity maps methods (options 3,4) are preferred over data-driven US methods (option 2) for bias
+correction.
+The option of using no RF sensitivity bias correction (option 1) is not recommended.</p>
+<h3 id="receive-field-sensitivity-measurements">Receive Field Sensitivity Measurements<a class="headerlink" href="#receive-field-sensitivity-measurements" title="Permanent link">¶</a></h3>
+<h4 id="body-and-head-coil-measurements">Body and Head Coil Measurements<a class="headerlink" href="#body-and-head-coil-measurements" title="Permanent link">¶</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Please see <a href="../references/#papp2016">Papp2016</a>.</p>
+</div>
+<p>The underlying assumption of this method is that the receive field sensitivity of the body coil is much flatter than
+that of an array head coil.
+Thus, if the anatomy is imaged with the head coil and the body coil sequentially, using the same acquisition parameters
+and assuming no motion, then the ratio of these two scans is the net head coil receive sensitivity field <em>fR</em> divided by
+a sensitivity field close to a constant.</p>
+<p>If receive field sensitivity measurements are available for each imaging contrast (one receive sensitivity field
+acquired either before or after each of the PDw, T1w and MTw contrasts), inter-scan variation of the sensitivity
+modulation can be accounted for and used to optimally correct for the combined inter-scan motion and sensitivity
+modulation effects in the quantitative maps.
+Therefore, the implemented RF sensitivity correction method (<code>Per contrast</code> option) combines the correction for
+motion-related relative receive sensitivity variations with rigid body realignment.</p>
+<p>The low resolution measurements from the head and body coils (in this order) for each T1w, PDw and MTw acquisition are
+expected as inputs to the RF sensitivity bias correction. A receive field sensitivity map is calculated for each
+contrast, and applied to the corresponding contrast to correct for any coil sensitivity driven signal intensity
+modulation.</p>
+<p>If RF sensitivity measurements are missing for some of the contrasts, or if only one single measurement is available,
+the same RF sensitivity bias correction can still be applied to all contrasts by choosing the corresponding <code>Single</code>
+option in the GUI.
+Only one pair of head coil and body coil images is then required.
+Receiver field inhomogeneities will be corrected for although not accounting for inter-scan motion.</p>
+<p>Note that the measured RF sensitivity maps will still suffer from residual variations associated with the
+field-inhomogeneities of the body coil.
+Because of this, this method is followed by an application of the Unified Segmentation approach to minimise the residual
+modulation due to the body coil RF sensitivity field.</p>
+<h4 id="only-head-coil-measurements">Only Head Coil Measurements<a class="headerlink" href="#only-head-coil-measurements" title="Permanent link">¶</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Please see <a href="../references/#balbastre2022">Balbastre2022</a>.</p>
+</div>
+<p>In cases where body coil images are not available or cannot be measured (e.g. at 7T where many scanners do not have a
+body coil), it is still possible to correct for the inter-scan variation of the sensitivity modulation.
+This is achieved by measuring a low resolution image with the same acquisition parameters before each contrast.
+After choosing the <code>Per contrast</code> option, each “head coil” image should be the per-contrast low resolution image, and
+the “body coil” images should all be the low resolution image measured before the PDw acquisition.</p>
+<p>As in the previous case, the measured RF sensitivity maps will suffer from residual variations associated with the
+field-inhomogeneities of the head coil.
+Because of this, this method is followed by an application of the Unified Segmentation approach to minimise the residual
+modulation due to the body coil RF sensitivity field.</p>
+<h3 id="data-driven-receive-field-estimation">Data Driven Receive Field Estimation.<a class="headerlink" href="#data-driven-receive-field-estimation" title="Permanent link">¶</a></h3>
+<p>If no receive field sensitivity map has been acquired, the <code>Unified Segmentation</code> option can be selected in the GUI.
+The receive field bias is then estimated from the calculated A map using the Unified Segmentation
+approach (<a href="../references/#ashburner2005">Ashburner2005</a>). Accurate bias field estimation requires the use of a brain mask combining the
+white and grey matter probability maps. The latter are derived by segmentation of the calculated MT map (because of its
+higher contrast in the basal ganglia (<a href="../references/#helms2009">Helms2009</a>) or alternatively (if no MTw images are available), by
+segmentation of the calculated R1 map. The method may require tuning for the specific head RF receive coil and its
+sensitivity profile.</p>
+<h2 id="imperfect-spoiling-correction">Imperfect Spoiling Correction<a class="headerlink" href="#imperfect-spoiling-correction" title="Permanent link">¶</a></h2>
+<p>The proposed MPM protocol uses RF and gradient spoiling to destroy unwanted transverse magnetisation. Imperfect spoiling
+can leave residual bias in the apparent R1 map if no further correction is
+used (<a href="../references/#preibisch2009">Preibisch and Deichmann 2009</a>). For specific MPM protocols using the customised sequences, the hMRI
+Toolbox provides spoiling correction coefficients to account for deviation from the Ernst equation. The coefficients are
+sequence-specific and can be determined by simulation (<a href="../references/#preibisch2009">Preibisch and Deichmann 2009</a>). Further refinements
+of this correction include diffusion effects on signal spoiling 
+(<a href="../references/#yarnykh2007">Yarnykh2007</a>, 
+<a href="../references/#lutti2012">Lutti2012</a>, 
+<a href="../references/#callaghan2015b">Callaghan2015b</a>).
+By default, this correction is disabled but can be enabled through
+the <a href="../defaultsAndCustomization/#imperfect-rf-spoiling-correction">toolbox customisation</a>.</p>
+<p>A module that efficiently calculates the protocol-specific correction parameters required to account for imperfect
+spoiling may be found within the toolbox.
+See <a href="../references/#corbin2021">Corbin2021</a> for guidance on calculation including the choice of T2 time and the moment of the spoiler
+gradients and the diffusion-spoiling effects of the readout.</p>
+<h2 id="mpm-model-to-estimate-r2-pd-r1-mt-maps">MPM Model to Estimate R2*, PD, R1 &amp; MT Maps<a class="headerlink" href="#mpm-model-to-estimate-r2-pd-r1-mt-maps" title="Permanent link">¶</a></h2>
+<p>The signal from the multi-echo PDw, T1w and MTw echoes is modelled by the Ernst
+equation (<a href="../references/#ernst1966">Ernst1966</a>,
+<a href="../references/#helms2008a">Helms2008a</a>,
+<a href="../references/#helms2008b">Helms2008b</a>) with an exponential decay with
+echo time (TE).</p>
+<p>The effective transverse relaxation rate R2* is derived from the exponential TE dependence of the signal. The unified
+description of the multi-echo data from two or more contrasts into a single signal model, denoted as
+ESTATICS (<a href="../references/#weiskopf2014">Weiskopf2014</a>), provides a more robust estimation of R2* with a higher signal-to-noise ratio (
+SNR). The toolbox provides several estimation methods including log-linear ordinary least squares (OLS; the original
+ESTATICS method), log-linear weighted least squares (WLS; a little slower than ordinary least squares but accounts for
+the heteroskedasticity induced by the logarithm) and nonlinear least squares (NLLS; very slow but homoskedastic). For
+backwards compatibility OLS is used by default, but this can be changed in
+the <a href="../defaultsAndCustomization/#create-hmri-maps-parameters">toolbox defaults file</a>.</p>
+<p>Using approximations of the signal equations for small repetition time (TR), the longitudinal relaxation rate (R1) and
+the A map (proportional to the proton density PD) can be efficiently estimated from the PDw and T1w
+data (<a href="../references/#helms2008a">Helms2008a</a>,<a href="../references/#edwards2021">Edwards2021</a>).
+Using the additional assumption of a small excitation flip
+angle for the MTw data, the magnetisation transfer (MT) saturation can be estimated from the R1 and A maps and the MTw
+data (<a href="../references/#helms2008b">Helms2008b</a>).
+By default, the small angle approximation is also assumed when computing R1 and A maps,
+but this can be changed in the <a href="../defaultsAndCustomization/#create-hmri-maps-parameters">toolbox defaults file</a>.</p>
+<p>The toolbox provides flexible correction methods for transmit (<em>fT</em>) and receive (<em>fR</em>) bias fields based on specific B1
+transmit and receive fields measurements or image processing methods. While <em>fT</em> influences the local apparent flip
+angle and hence all three (R1, A, MT) maps, the RF sensitivity bias field <em>fR</em> only influences the A map. Rescaling of
+the A map to a PD map (with mean white matter PD of 69%) is performed when sufficient data are available to account for
+R2* decay (<a href="../references/#balteau2018">Balteau2018</a>) and <em>fT</em> and <em>fR</em> biases.</p>
+<p>The toolbox can also handle the situation where only a subset of data is available. For example, R2*, R1 and PD can
+still be estimated when no MTw data are available, and R2* alone can be estimated when no MTw nor T1w echoes are
+available (i.e. only multi-echo PDw data are available).</p>
+<h2 id="output-files">Output Files<a class="headerlink" href="#output-files" title="Permanent link">¶</a></h2>
+<p>By default, the estimated quantitative maps are output into a <code>Results</code> subdirectory within the folder of the first
+PD-weighted echo. Alternatively, a user-defined folder for the output of the toolbox can be selected where the <code>Results</code>
+directory will be created. The main estimated qMRI maps are saved in the specified output directory while supplementary
+files are output in the <code>Results/Supplementary</code> subfolder. The basename for all qMRI maps is derived from the first echo
+of the PD-weighted image series, see below for a brief description. If the data are reprocessed, a new sub-folder is
+created.</p>
+<h3 id="cleanup-options-and-temporary-directories">Cleanup Options and Temporary Directories<a class="headerlink" href="#cleanup-options-and-temporary-directories" title="Permanent link">¶</a></h3>
+<p>During data processing, many files are created that are of no interest for the end-user. Only maps, images and log files
+of interest for further statistical analysis and quality control are stored in the <code>Results</code> directory and subdirectory.
+The temporary files can be of great value for piloting and debugging purposes though. They’re convenient if one desires
+have a closer look at the intermediate processing steps to e.g. spot the origin of an artefact.</p>
+<p>The temporary folders are created at the same location as the <code>Results</code> directory. They include:</p>
+<ul>
+<li>RFsensCalc: to process <a href="#receive-field-sensitivity-measurements">(measured) RF sensitivity data</a> and
+  apply <a href="#rf-sensitivity-bias-correction">RF sensitivity bias correction</a> to the original images.</li>
+<li>B1mapCalc: to process B1 mapping data for <a href="#b1-transmit-bias-correction">B1 transmit bias correction</a>.</li>
+<li>MPMCalc: to generate the quantitative maps R1, R2*, PD and MT (or part of them, depending on the input).</li>
+</ul>
+<p>The default parameter <code>hmri_def.cleanup</code> can be <a href="../defaultsAndCustomization/#examples">customized</a>. By default, it is set
+to <code>false</code>. All temporary directories will be deleted when the <em>Create hMRI maps</em> module has completed (recommended to
+save disk space). </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Reminder for <a href="../defaultsAndCustomization/">toolbox customization</a>: never modify the defaults files
+located at the root of the <code>config</code> directory. Instead, use one of the template defaults files from <code>config/local</code> and
+save it under a meaningful name.</p>
+</div>
+<h3 id="example-outputs-from-the-create-hmri-maps-module">Example Outputs from the <em>Create hMRI maps</em> Module<a class="headerlink" href="#example-outputs-from-the-create-hmri-maps-module" title="Permanent link">¶</a></h3>
+<p>Output files from the Create hMRI maps module using the SE/STE B1 mapping and per-contrast RF sensitivity bias
+correction.</p>
+<h4 id="results-directory-description"><code>Results directory</code> &gt; Description<a class="headerlink" href="#results-directory-description" title="Permanent link">¶</a></h4>
+<ul>
+<li><code>&lt;firstPDfileName&gt;_MT.[nii|json]</code> &gt; Estimated magnetisation transfer map in p.u.</li>
+<li><code>&lt;firstPDfileName&gt;_PD.[nii|json]</code> &gt; Estimated proton density PD map in p.u.</li>
+<li><code>&lt;firstPDfileName&gt;_R1.[nii|json]</code> &gt; Estimated longitudinal relaxation rate R1 map in s^-1</li>
+<li><code>&lt;firstPDfileName&gt;_R2s_&lt;R2sMethod&gt;.[nii|json]</code> &gt; Estimated transversal relaxation rate R2* map in s^-1 (ESTATICS),
+  where <code>&lt;R2sMethod&gt;</code> is the R2* fitting method (e.g. <code>OLS</code> or <code>WLS1</code>;
+  see <a href="../defaultsAndCustomization/#create-hmri-maps-parameters">Create hMRI maps parameters</a>).</li>
+</ul>
+<h4 id="resultssupplementary-directory-description"><code>Results/Supplementary directory</code> &gt; Description<a class="headerlink" href="#resultssupplementary-directory-description" title="Permanent link">¶</a></h4>
+<ul>
+<li><code>hMRI_map_creation_rfsens_params.json</code> &gt; RF sensitivity bias correction parameters (measured sensitivity maps)</li>
+<li><code>hMRI_map_creation_b1map_params.json</code> &gt; B1 transmit map estimation: acquisition and processing parameters</li>
+<li><code>hMRI_map_creation_job_create_maps.json</code> &gt; Create hMRI maps: acquisition and processing parameters</li>
+<li><code>hMRI_map_creation_mpm_params.json</code> &gt; Acquisition and processing parameters used for the current job</li>
+<li><code>hMRI_map_creation_quality_assessment.json</code> &gt; Quality assessment results</li>
+<li><code>&lt;firstSESTEfileName&gt;_B1map.[nii|json]</code> &gt; Estimated B1 bias field <em>fT</em> map (p.u.)</li>
+<li><code>&lt;firstSESTEfileName&gt;_B1ref.[nii|json]</code> &gt; Anatomical reference for B1 bias field correction</li>
+<li><code>&lt;firstPDfileName&gt;_MTw_&lt;R2sMethod&gt;fit_TEzero.[nii|json]</code> &gt; MTw echoes extrapolated to TE=0, where <code>&lt;R2sMethod&gt;</code> is the
+  R2* fitting method</li>
+<li><code>&lt;firstPDfileName&gt;_PDw_&lt;R2sMethod&gt;fit_TEzero.[nii|json]</code> &gt; PDw echoes extrapolated to TE=0, where <code>&lt;R2sMethod&gt;</code> is the
+  R2* fitting method</li>
+<li><code>&lt;firstPDfileName&gt;_R2s.[nii|json]</code> &gt; Estimated R2* map from simple exponential fit (PDw echoes)</li>
+<li><code>&lt;firstPDfileName&gt;_T1w_&lt;R2sMethod&gt;fit_TEzero.[nii|json]</code> &gt; T1w echoes extrapolated to TE=0, where <code>&lt;R2sMethod&gt;</code> is the
+  R2* fitting method</li>
+</ul>
+<h2 id="batch-options">Batch Options<a class="headerlink" href="#batch-options" title="Permanent link">¶</a></h2>
+<p>Help on batch options is automatically generated from the toolbox config files. The information is collected in
+the <a href="../helpScripts/#create-hmri-maps">Help</a> section.</p>
+<h2 id="setting-up-local-defaults">Setting up local defaults<a class="headerlink" href="#setting-up-local-defaults" title="Permanent link">¶</a></h2>
+<p>Since acquisition parameters as well as processing parameters can be site- and scanner-dependent, the defaults must be
+customizable. This topic is extensively described in
+section <a href="../defaultsAndCustomization/">“Default parameters and customization of the toolbox”</a>.</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">¶</a></h2>
+<p>This example will take you step-by-step through the processing (map creation part) of the hMRI demo dataset
+available <a href="../hmriDemoDataset/">here</a>. Unless specified, default settings should be left unchanged. See
+the <a href="../debugMetadataAndLogFiles/#visual-inspection-of-the-created-maps">Debug tips &amp; tricks</a> section for tips about
+displaying the created maps for visual inspection.</p>
+<h4 id="set-up-and-run-the-map-creation-module">Set up and Run the Map Creation Module<a class="headerlink" href="#set-up-and-run-the-map-creation-module" title="Permanent link">¶</a></h4>
+<ol>
+<li>Download and unzip the hMRI demo dataset within a <code>data</code> directory on your hard drive.</li>
+<li>Create a <code>derivative</code> directory to store processing results.</li>
+<li>Start SPM (<code>spm fmri</code>) and open the Batch GUI (<code>Batch</code> button in the SPM Menu window).</li>
+<li>Go to <code>SPM</code> &gt; <code>Tools</code> &gt; <code>hMRI Tools</code> &gt; <code>Create hMRI maps</code> (Batch GUI).</li>
+<li>In <code>Output choice</code>, select <code>Output directory</code> and specify the newly created <code>derivative</code> directory as output
+   directory.</li>
+<li>In <code>B1 bias correction</code> &gt; <code>B1 input</code>, select all the volumes found in <code>mfc_seste_b1map_v1e_0004</code> (keep alphabetical
+   order).</li>
+<li>In <code>B1 bias correction</code> &gt; <code>B0 input</code>, select all the volumes found in <code>gre_field_mapping_1acq_rl_0005</code>
+   and <code>gre_field_mapping_1acq_rl_0006</code> (in that order).</li>
+<li>In <code>Multiparameter input images</code> &gt; <code>MT images</code>, select all the volumes found in <code>mtw_mfc_3dflash_v1i_R4_0012</code> (keep
+   alphabetical order).</li>
+<li>In <code>Multiparameter input images</code> &gt; <code>PD images</code>, select all the volumes found in <code>pdw_mfc_3dflash_v1i_R4_0009</code> (keep
+   alphabetical order).</li>
+<li>In <code>Multiparameter input images</code> &gt; <code>T1 images</code>, select all the volumes found in <code>t1w_mfc_3dflash_v1i_R4_0015</code> (keep
+    alphabetical order).</li>
+<li>Save and run the batch.</li>
+</ol>
+<h4 id="note-on-pop-up-messages-and-warnings">Note on Pop-up Messages and Warnings<a class="headerlink" href="#note-on-pop-up-messages-and-warnings" title="Permanent link">¶</a></h4>
+<p>By default, any information or warning considered potentially critical for the processing of your data will be displayed
+in a pop-up window, blocking the execution of the code. This is obviously rather annoying if you intend to process a
+bunch of data over night ;)! It can be disabled (see the Batch option “Pop-up warnings”) for that purpose. For piloting
+data processing though (e.g. processing a single-subject dataset to check everything is generated as expected), it is
+recommended to keep the pop-up option enabled, so you can read through and acknowledge every message and make sure
+everything is set up properly before running the processing on a whole group.</p>
+<p>Warning messages are only meant to make you aware of some of the processing steps and parameters used to generate the
+maps. And to give you a chance to decide whether these processing steps and parameters are definitely the right ones for
+the data you have at hand. Most warning and information messages are listed in
+the <a href="../debugMetadataAndLogFiles/#processing-message-log-files">Debug tips &amp; tricks</a> section, with a description of
+potential implications and actions to be taken.</p>
+<h4 id="results-description">Results Description<a class="headerlink" href="#results-description" title="Permanent link">¶</a></h4>
+<p>The four maps generated (MT, PT, R2s and R1) will be found in <code>derivative/Results</code>. These maps are the relevant ones for
+statistical analysis (see section on <a href="../processing/">Map Processing</a>). In <code>derivative/Results/Supplementary</code> are stored the
+processing parameters and various additional images. Given the strong inter-scan motion factor in the dataset (affecting
+the MTw data, see details <a href="../hmriDemoDataset/">here</a>), the MT map is strongly affected by artefacts. The R2* map is not
+affected by such inter-scan motion, although including data input from all three contrasts (PDw, T1w and MTw). The PD
+and R1 maps do not rely on the MTw data and do not suffer from the same inhomogeneity. In addition, the PD map is
+corrected for RF sensitivity bias by applying the US algorithm.</p>
+<p><img alt="Visual check of the results" src="../../assets/images/docs/MapCreation_tutorial_check_maps_run02_RFsensUScorr.png"></p>
+<h4 id="alternative-processing-more-robust-rf-sensitivity-bias-correction">Alternative Processing - More Robust RF Sensitivity Bias Correction<a class="headerlink" href="#alternative-processing-more-robust-rf-sensitivity-bias-correction" title="Permanent link">¶</a></h4>
+<p>By default, (as used in the above step-by-step description), when no RF sensitivity data are available, Unified
+Segmentation is used to estimate the Bias Field related to the receiver field profile. If RF sensitivity data are
+available (as is the case in the hMRI demo dataset), a more robust and especially more motion-insensitive correction can
+be applied. The following steps are to be taken in addition to the ones described above:</p>
+<ul>
+<li>In <code>RF sensitivity bias correction</code>, select <code>Per contrast</code>. This indicates that one RF sensitivity dataset has been
+  acquired per contrast, i.e. for each of the MTw, PDw and T1w series. One separate RF sensitivity dataset will be
+  required for each contrast. With such data, the corresponding RF sensitivity data will better account for inter-scan
+  movements of the subject, making the RF sensitivity bias correction more robust to such movements.</li>
+<li>In <code>RF sensitivity bias correction</code> &gt; <code>Per contrast</code> &gt; <code>RF sensitivity maps for MTw images</code>, select the volumes found
+  in <code>mfc_smaps_v1a_Array_0010</code> and <code>mfc_smaps_v1a_QBC_0011</code> (in that order).</li>
+<li>In <code>RF sensitivity bias correction</code> &gt; <code>Per contrast</code> &gt; <code>RF sensitivity maps for PDw images</code>, select the volumes found
+  in <code>mfc_smaps_v1a_Array_0007</code> and <code>mfc_smaps_v1a_QBC_0008</code> (in that order).</li>
+<li>In <code>RF sensitivity bias correction</code> &gt; <code>Per contrast</code> &gt; <code>RF sensitivity maps for T1w images</code>, select the volumes found
+  in <code>mfc_smaps_v1a_Array_0013</code> and <code>mfc_smaps_v1a_QBC_0014</code> (in that order).</li>
+<li>Save and run the batch.</li>
+</ul>
+<h4 id="better-results-description"><em>Better</em> Results Description<a class="headerlink" href="#better-results-description" title="Permanent link">¶</a></h4>
+<p>Thanks to the per-contrast RF sensitivity maps used for RF sensitivity bias correction, motion artefacts observed
+previously are strongly reduced (see MT map in particular). However, the RF sensitivity maps are not fully bias-free
+themselves! The RF sensitivity maps are calculated assuming that the body coil sensitivity profile in homogeneous, which
+is usually not the case on modern 2-channel body coils. Therefore, the calculated RF sensitivity maps are modulated by
+the body coil RF sensitivity profile, which will be visible on the calculated PD maps in particular. Overall, the
+improvement in terms of scan-rescan reproducibility and inter-scan motion insensitivity observed with the <code>Per contrast</code>
+option is still worth the hassle of acquiring and using such data.</p>
+<p><img alt="Visual check of the results" src="../../assets/images/docs/MapCreation_tutorial_check_maps_run03_RFsensmapscorr.png"></p></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../hmriDemoDataset/" class="md-footer__link md-footer__link--prev" aria-label="Previous: hMRI Demo Dataset">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                hMRI Demo Dataset
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../processing/" class="md-footer__link md-footer__link--next" aria-label="Next: Spatial Processing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Spatial Processing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2012 - 2023 hMRI Toolbox Team and Collaborators
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hMRI-group" target="_blank" rel="noopener" title="Repository on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://app.gitter.im/#/room/#hMRI-toolbox:gitter.im" target="_blank" rel="noopener" title="Join the chatroom" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M512 240c0 114.9-114.6 208-256 208-37.1 0-72.3-6.4-104.1-17.9-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9s-1.1-12.8 3.4-17.4l.3-.3c.3-.3.7-.7 1.3-1.4 1.1-1.2 2.8-3.1 4.9-5.7 4.1-5 9.6-12.4 15.2-21.6 10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240 0 125.1 114.6 32 256 32s256 93.1 256 208z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.cbs.mpg.de/departments/neurophysics/software/hmri-toolbox" target="_blank" rel="noopener" title="Institute hMRI Toolbox page" class="md-social__link">
+      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 2.4672768 2.4672768"
+   version="1.1"
+   id="svg46"
+   sodipodi:docname="mpg.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs50" />
+  <sodipodi:namedview
+     id="namedview48"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     showgrid="false"
+     inkscape:zoom="11.1744"
+     inkscape:cx="7.8751432"
+     inkscape:cy="23.133233"
+     inkscape:window-width="1551"
+     inkscape:window-height="1082"
+     inkscape:window-x="736"
+     inkscape:window-y="86"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g2061" />
+  <g
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     id="g44">
+    <g
+       id="g2061"
+       transform="translate(0.06906723,0.08378312)">
+      <path
+         d="m 0.05598597,1.1484729 c 0,-0.60896643 0.49823202,-1.10998044 1.10997393,-1.10998044 0.6117418,0 1.1099596,0.50101401 1.1099596,1.10998044 0,0.6117455 -0.4982321,1.1127312 -1.1099596,1.1127312 -0.61172765,0 -1.10997393,-0.5009857 -1.10997393,-1.1127312 z m -0.03321843,0 c 0,0.631113 0.51208396,1.143186 1.14319316,1.143186 0.6283443,0 1.1404141,-0.512073 1.1404141,-1.143186 0,-0.62834834 -0.5120698,-1.14042124 -1.1404141,-1.14042124 -0.6311092,0 -1.14319316,0.5120729 -1.14319316,1.14042124 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path4"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.9160796,1.3366884 c -0.033205,0.02769 -0.077498,0.02769 -0.1107307,0.052601 -0.016588,0.016588 -0.013839,0.033206 -0.00551,0.055366 0.013839,0.024911 0.00551,0.022133 -0.011073,0.030454 -0.041528,0.013837 -0.041528,0.058116 -0.094114,0.052572 -0.00277,0 -0.013867,-0.00554 -0.00832,0.00276 0.00554,0.00832 0.00832,0.00277 0.019367,0.00277 0.019367,0.00276 0.024912,-0.00554 0.038777,-0.013838 0.019367,-0.016616 0.016588,-0.022161 0.038748,-0.033233 0.00554,0 0.019367,-0.00276 0.027662,-0.00276 0.00277,0.00554 0.00277,0.00554 0.00277,0.011074 0,0.011073 -0.019367,0.022133 -0.02769,0.024911 0.011073,0.00829 0.02769,0.019366 0.024911,0.030454 -0.00275,0.00554 -0.00275,0.00829 -0.011045,0.011044 -0.00832,0.00554 -0.030455,0.00554 -0.049851,-0.011044 -0.00275,0.00276 -0.00551,-0.00554 -0.013839,0.00276 0.019367,0.019368 0.044278,0.013837 0.047071,0.019368 0.00554,0.00277 -0.013838,0.02769 -0.013838,0.030454 -0.011073,0.035984 0.00275,0.066439 -0.00277,0.099644 -0.00275,0.02769 -0.011073,0.041527 -0.035984,0.058144 -0.044278,0.030426 -0.074733,0.038749 -0.1245545,0.047043 -0.1273206,0.0083 -0.2103758,-0.035981 -0.3016968,-0.1051849 -0.094128,-0.06919 -0.1300981,-0.105188 -0.1577879,-0.143937 0,-0.016616 0.011073,-0.02769 0,-0.047072 -0.0083,0.00554 -0.00554,0.016616 -0.011073,0.022161 -0.0083,0.011073 -0.024911,0.016616 -0.038748,0.016616 C 1.0607767,1.5359485 1.0580127,1.4916715 1.0358657,1.4667595 0.9832795,1.4169365 0.969427,1.3422044 0.9943524,1.2812949 c 0.0110737,-0.019368 0.027675,-0.035984 0.0498225,-0.044278 0.022145,-0.00275 0.049836,-0.00275 0.06366,0.022161 0.019382,0.016588 0.030455,0.044278 0.035984,0.069189 0.0083,0.013838 -0.00276,0.024911 0.011073,0.035984 0.022146,0.00276 0.041514,0.00829 0.060881,-0.00554 0.016617,0.00276 0.016617,0.019366 0.030455,0.027661 l 0.019367,0.011074 c 0.02216,0.011073 0.0526,0.011073 0.071983,-0.00554 0.035984,-0.035984 0.027662,-0.074733 0.038748,-0.1134821 0.033233,-0.030454 0.055364,-0.071983 0.055364,-0.1135108 -0.00275,-0.027662 -0.011073,-0.052573 -0.024911,-0.080263 0.00278,-0.013837 0.011073,-0.024911 0.013838,-0.038749 0.00554,0 0.011073,0 0.013867,-0.00276 0.038748,-0.0083 0.071954,-0.041527 0.08857,-0.0775117 l 0.00275,-0.002764 c 0.041528,-0.002764 0.096893,-0.0193824 0.1190536,-0.0636599 0.00551,-0.0193819 0.027661,-0.005543 0.0415,-0.008309 0.02216,-0.002764 0.047071,-0.0138379 0.060895,-0.0276757 0.00829,-0.002764 0.011073,0.002764 0.013838,0.005543 0.00832,0.0332195 0.02769,0.0636603 0.038776,0.0996442 0.013839,0.0249114 0.016588,0.0498228 0.013839,0.0747482 0.00275,0.038749 0.027662,0.077498 0.044278,0.1190256 0.013839,0.041528 0.041527,0.085806 0.058116,0.1273482 0.00277,0.016631 0.011073,0.030484 -1.23e-5,0.047072 z m 0.00832,-0.074733 c -0.030456,-0.069189 -0.063689,-0.1273201 -0.0886,-0.1992885 -0.019367,-0.024911 -0.00829,-0.052587 -0.011045,-0.0802767 -0.011073,-0.0387489 -0.02769,-0.0719685 -0.044307,-0.11348222 -0.00551,-0.0110733 0.00832,-0.013838 0.011073,-0.024911 0.00832,-0.0193819 0.00278,-0.0415281 -0.00554,-0.0636599 -0.00554,-0.0110733 0.00832,-0.0166172 0.00554,-0.027676 0,-0.0193671 -0.013838,-0.0332191 -0.027662,-0.0415276 -0.019367,-0.0276757 -0.02769,-0.0415138 -0.049822,-0.0664247 v -0.005543 c 0.011045,-0.008308 0.019367,-0.0276757 0.019367,-0.0442925 -0.00277,-0.0166172 -0.00832,-0.0332196 -0.024912,-0.0442785 -0.02769,-0.0166169 -0.0526,0.008308 -0.074733,0.0193815 -0.00832,0.005529 -0.011073,0.008294 -0.019367,0.008294 -0.00277,-0.002764 -0.011073,-0.002764 -0.016616,-0.005529 l -0.019367,0.0193814 0.024911,0.008309 c 0.00275,0.002764 0.00275,0.002764 0.00275,0.005529 -0.00275,0.002764 -0.060895,0.0525866 -0.060895,0.0525866 L 1.4400219,0.76373494 1.4095675,0.79418972 1.315439,0.9021421 C 1.265617,0.9575082 1.1936636,1.0516086 1.1493712,1.1208123 c -0.022146,0.03044 -0.044293,0.063674 -0.066439,0.09688 0,0.00277 -0.00553,0.00277 -0.011073,0.00277 h -0.013839 c -0.024925,0.00551 -0.041527,0.011045 -0.0581297,0.027662 -0.0276759,0.027661 -0.0387487,0.06366 -0.0387487,0.099644 0,0.027661 0.00555,0.052601 0.0193669,0.080276 -0.00555,0.013838 -0.0193669,0.027662 -0.027675,0.038749 l -0.005531,0.00554 -0.008307,0.00554 c -0.002765,0.00554 -0.008307,0.011074 -0.0138385,0.016616 0,0.00276 0,0.00554 0.002765,0.00829 h 0.005531 c 0.0221457,-0.00554 0.035984,-0.022161 0.0470578,-0.038749 l 0.0110728,-0.011074 c 0.002775,0 0.002775,0 0.008307,0.00276 0,0 0.002765,0.00277 0.002765,0.00554 v 0.00832 C 0.9500686,1.5221493 0.905777,1.5498533 0.85319049,1.5830586 l -0.0110738,0.00554 h 0.0110738 c 0.0221457,0.00276 0.0415275,-0.00829 0.0608944,-0.022161 l 0.0249103,-0.011045 c 0.0221471,-0.011053 0.0442796,-0.027671 0.0636605,-0.047053 L 1.0220386,1.4945 c 0.00276,0 0.00553,0 0.00553,0.00276 l 0.00277,0.00277 0.016617,0.033205 c -0.00277,0.016616 -0.00277,0.033204 -0.00277,0.047072 0,0.033205 0.00555,0.066411 0.013853,0.099644 0.00553,0.033206 0.013839,0.066411 0.013839,0.099644 v 0.00554 c 0,0.011045 -0.011074,0.024911 -0.022145,0.027662 -0.019367,0.00276 -0.044278,0.00276 -0.071968,0.00276 -0.0332194,0 -0.0664387,0.00277 -0.0941141,0.00832 -0.008307,0.00276 -0.0166172,0.00554 -0.027675,0.00829 -0.008307,0.00277 -0.0193669,0.00554 -0.0249103,0.00554 h -0.005531 l -0.002765,0.00277 c -0.002765,0.00276 -0.005531,0.00551 -0.005531,0.00829 h -0.002765 c 0,0.00554 0.002765,0.00829 0.00555,0.00829 0.002765,0.00277 0.002765,0.00277 0.005531,0.00277 0.008307,0 0.0166171,-0.00277 0.027675,-0.00554 0.002765,-0.00277 0.0110738,-0.00554 0.0166172,-0.00554 0.0553659,-0.011073 0.11348125,-0.00829 0.155009,-0.00277 0.019367,-0.00276 0.052587,-0.00276 0.063659,-0.030454 0.00555,-0.011045 0.00555,-0.022133 0.00555,-0.033205 0,-0.011073 0,-0.022132 -0.00276,-0.033205 l -0.00555,-0.027691 c 0,-0.016588 -0.00276,-0.033206 -0.0083,-0.049822 C 1.0719044,1.641146 1.0663804,1.610704 1.0663804,1.580278 V 1.563662 h 0.00276 c 0.00276,-0.00277 0.00276,0 0.00553,0.00276 0.00553,0.00277 0.0083,0.00554 0.011074,0.00554 0.00276,0.00277 0.0083,0.00277 0.011073,0.00277 0.00553,0 0.0083,0.00276 0.0083,0.00554 0.00276,0.027662 0.011073,0.055366 0.022146,0.080277 0.00554,0.019367 0.011073,0.038749 0.013838,0.058116 0.0083,0.030454 0.016616,0.06366 0.016616,0.094115 a 0.21034593,0.21034724 0 0 1 -0.0083,0.058122 c -0.013853,0.024911 -0.047057,0.024911 -0.074747,0.02769 H 1.0635974 L 0.9916292,1.893052 c -0.063659,-0.00554 -0.12455434,-0.011074 -0.19099291,0 l -0.0166105,0.00278 c -0.008307,0 -0.0166171,0.00277 -0.0249253,0 -0.002765,-0.00276 -0.002765,-0.00551 -0.002765,-0.011044 v -0.00554 c 0.0110728,-0.02491 0.0166172,-0.047072 0.0166172,-0.069189 0,-0.016617 -0.002775,-0.033235 -0.0110728,-0.044306 -0.0166162,-0.033206 -0.035984,-0.055338 -0.0581297,-0.071954 -0.027675,-0.02769 -0.0525862,-0.052601 -0.0747328,-0.080277 -0.0110738,0 -0.0193819,-0.00277 -0.0221457,-0.00277 l -0.0138385,0.013867 c 0.0166172,0.016588 0.0304547,0.030454 0.0498225,0.049822 0.027675,0.013838 0.0498366,0.041528 0.0692035,0.060868 0.0249243,0.02769 0.0304547,0.058144 0.0249243,0.09135 -0.002775,0.038777 -0.0387628,0.055366 -0.0636731,0.083056 -0.008307,0.019368 -0.0166031,0.041499 0,0.060867 0.00555,0.022161 0.0442781,0.019396 0.0498225,0.035984 0.0110738,0.044278 0.0830409,0.069189 0.0996436,0.069189 0.0138525,0.00277 0.0276759,0.016616 0.0276759,0.016616 0.0304547,0.022161 0.0664388,0.016616 0.0885853,0.013838 0.0193669,-0.00276 0.0553659,0.013866 0.0774975,0.011074 0.035984,-0.013838 0.063659,-0.00829 0.099644,-0.011074 0.1107167,0 0.235271,0 0.3487524,0.013866 0.02216,-0.00277 0.047072,0.011044 0.066439,0.00276 0.00277,-0.00829 0,-0.016617 0,-0.022161 -0.055366,-0.085798 -0.06366,-0.1798979 -0.033207,-0.274041 h 0.022131 c 0.071982,0.00832 0.1384208,0 0.2131535,-0.044278 0.038748,-0.019368 0.058116,-0.069189 0.055365,-0.102409 0,-0.022161 -0.00832,-0.049823 -0.00554,-0.071984 0.00275,-0.011073 0.00829,-0.027661 0.019367,-0.033204 0.00275,-0.00277 0.016617,-0.011074 0.02216,-0.022161 0.00829,-0.02216 -0.00832,-0.030454 -0.013867,-0.033206 0.013867,-0.00277 0.024911,-0.030454 0.013867,-0.047071 -0.00832,-0.00829 -0.016617,-0.038749 -0.016617,-0.047043 -0.00277,-0.013867 -0.00277,-0.02769 0.00829,-0.038777 0.030455,-0.013838 0.058145,-0.016588 0.088571,-0.030454 0.02216,-0.00829 0.033233,-0.030454 0.033233,-0.049823 z M 0.7230819,1.9539777 c -0.002765,0.00554 -0.002765,0.011073 -0.002765,0.019368 -0.002775,0.00554 -0.0138525,0 -0.0166162,-0.00277 -0.0138384,-0.00829 -0.0138384,-0.00276 -0.0166172,-0.016588 0,-0.00829 0,-0.016617 0.0110728,-0.022161 0.0110738,-0.00554 0.0249103,-0.011044 0.0332193,0 1.463e-5,0.00554 -0.008297,0.013867 -0.008297,0.022161 z m 0.0747328,0.09135 c -0.0193669,0 -0.0304397,-0.00832 -0.0387488,-0.030454 -0.008307,-0.024911 -0.0110738,-0.047072 -0.005531,-0.074733 0.002765,-0.00277 0.005531,-0.00554 0.008307,-0.00277 l 0.0249103,-0.011073 c 0.00555,-0.00276 0.0138385,-0.00276 0.0221457,0 l 0.002765,0.00554 c 0,0.013867 -0.002765,0.022161 -0.002765,0.035984 0,0.033206 -0.00555,0.041527 0.005531,0.071984 -0.002765,0.00827 -0.0110728,0.00553 -0.0166171,0.00553 z M 1.7832313,0.83845303 c -0.00277,0.002764 -0.00554,0.005529 -0.011073,0.005529 -0.00829,-0.008308 -0.00554,-0.013838 -0.00275,-0.0221462 0,-0.002764 0,-0.002764 0.00275,-0.002764 0.00554,0 0.00829,0.002764 0.00829,0.002764 0.00277,0.005543 0.00277,0.0110872 0.00277,0.0166167 z M 1.1023004,1.2315003 C 1.1604305,1.1263267 1.2323986,1.0349767 1.3071312,0.93809717 L 1.415069,0.81907154 C 1.48983,0.73603014 1.5756215,0.65298832 1.6697498,0.58932838 c 0.011045,-0.005543 0.016588,-0.0221463 0.027662,-0.0110733 l 0.011073,0.0110733 c 0.00829,0.008308 0.00276,0.0304404 -0.00554,0.038749 -0.00554,0.002764 -0.011073,0.008308 -0.016617,0.0138521 0.016617,0.0193675 0.044278,0.052587 0.066439,0.0747333 0.00829,0.008309 0.00554,0.0193675 0.02216,0.0276757 0.00829,0.002764 0.011045,0.0138379 0.00551,0.0221462 -0.013839,0.0193819 -0.038748,0.013838 -0.060867,0.0193819 -0.071983,0.0166024 -0.1328772,0.0387485 -0.2131535,0.0774976 -0.063659,0.0359842 -0.1162604,0.0719685 -0.1633032,0.13286365 -0.019367,0.0221469 -0.038748,0.0387488 -0.055365,0.0636742 -0.041528,0.055351 -0.074733,0.1079524 -0.1079663,0.1660689 -0.013824,0.016617 -0.016602,0.024911 -0.033205,0.041527 -0.0083,0.00829 -0.016616,-0.00829 -0.022145,-0.013837 v -0.00277 h -0.0083 c -0.00275,-0.00829 -0.016602,-0.011059 -0.013824,-0.019381 z M 1.7472472,0.824615 c 0,0.0193819 -0.027662,0.0359842 -0.049822,0.0415281 -0.00829,0.002764 -0.019367,0.002764 -0.027662,0.002764 -0.00277,-0.002764 -0.00277,-0.002764 -0.00277,-0.005544 0,-0.0110729 0.00277,-0.0166024 0.00277,-0.024911 l 0.00554,-0.002779 c 0.022131,-0.005529 0.044278,-0.0110729 0.06641,-0.0138375 0.00276,1.479e-5 0.00553,1.479e-5 0.00553,0.002779 z m -0.2075956,0.0526014 0.00275,-0.005543 c 0.013838,-0.005543 0.030455,-0.0138381 0.049822,-0.0193815 l 0.019367,-0.005529 c 0.00829,-0.005543 0.019367,-0.008308 0.02216,0 0.00275,0.024911 -0.019367,0.0608952 -0.049822,0.0747328 -0.011073,0.002764 -0.02216,0.005543 -0.035984,0.008309 -0.00278,-0.002764 -0.013838,0.002764 -0.013838,-0.005543 1.23e-5,-0.0138375 0.00554,-0.0332191 0.00554,-0.047043 z M 1.3154251,1.3809808 c -0.00829,0.00277 -0.058116,-0.016588 -0.052572,-0.011044 -0.011073,-0.013867 0.00829,-0.019396 -0.035984,-0.035984 l -0.011073,0.00276 c -0.00275,0 -0.00554,0.00277 -0.011073,-0.00276 0,-0.00832 0.011073,-0.00554 0.011073,-0.013837 0.016617,-0.035984 0.00832,-0.066439 0.00832,-0.1024373 l 0.00827,-0.030454 c 0.024911,-0.027661 0.024911,-0.030454 0.038748,-0.047057 0.016617,-0.022147 0.019367,-0.022147 0.038776,-0.038749 0.00551,-0.00554 0.011045,-0.00554 0.013838,-0.00276 0.011073,0.0083 0.011073,0.013852 0.013838,0.022147 0.00554,0.035984 -0.016616,0.060896 -0.041528,0.080263 -0.019367,0.016617 -0.035984,0.038777 -0.033205,0.063688 v 0.00276 c 0.011073,-0.00829 0.019367,-0.011073 0.024911,-0.019366 0.011073,-0.033206 0.049821,-0.047072 0.071983,-0.074734 0.011045,-0.016617 0.00275,-0.044292 0,-0.063674 0,0.00277 0.027661,-0.013837 0.022131,-0.0083 0.011073,0.00554 0.011073,0.016617 0.016616,0.027676 0.011073,0.030454 0.011073,0.06091 -0.00832,0.088572 l -0.052572,0.06366 c -2.46e-5,0.035999 0.00827,0.077527 -0.022188,0.099659 z m 0.069189,-0.3210787 c -0.013838,0.00553 -0.024882,0.00829 -0.0415,0 -0.00277,-0.00278 -0.013838,-0.0083 -0.011073,-0.013852 0.011073,-0.019367 0.02769,-0.03044 0.038748,-0.0470573 l 0.00554,-0.002765 C 1.3984891,0.968552 1.4316951,0.946406 1.4649001,0.9270385 l 0.019396,-0.005543 c 0.00275,-0.005543 0.013838,-0.0166169 0.016588,-0.005543 0,0.0332194 -0.013838,0.0692038 -0.047043,0.0941146 -0.019367,0.013837 -0.024912,0.011073 -0.044278,0.013837 l -0.00832,0.013852 a 0.04303826,0.04303852 0 0 1 -0.016631,0.022147 z M 1.2046943,1.253661 v 0.022132 c -0.00275,0.022161 -0.011045,0.049823 -0.033205,0.060896 -0.011073,-0.00276 -0.0083,-0.019367 -0.011073,-0.027662 0.0083,-0.022161 0.024912,-0.038777 0.035984,-0.060896 h 0.00554 z M 0.91407202,2.0840763 c -0.008307,0.011073 -0.0138384,0.00554 -0.0221457,0.00554 -0.0249243,-0.00554 -0.0387628,-0.016616 -0.0470569,-0.044278 -0.008307,-0.038778 -0.008307,-0.083056 0,-0.1218047 l 0.002765,-0.00276 c 0.0193819,-0.00277 0.0442921,-0.00554 0.0526013,0 0.005531,0.00276 -0.008307,0.071954 -0.008307,0.071954 0,0.013838 0.008307,0.049822 0.0138384,0.069189 0,-1.23e-5 0.0138385,0.016603 0.008307,0.022146 z M 1.0912272,2.0397836 c 0,0.027661 -0.033219,0.049822 -0.047057,0.052572 -0.016616,0.00554 -0.0636592,0.00277 -0.0747328,0 -0.0138385,-0.00554 -0.0470578,-0.069189 -0.0442781,-0.102409 0,-0.02769 0.008307,-0.069189 0.0193819,-0.074733 0.0110597,-0.00277 0.0387488,0 0.0387488,0 0.0138384,0 0.0221457,0.00276 0.0332194,0.00554 0.0083,0 0,0.011045 0.00553,0.016589 0.00276,0.013837 0.00276,0.02769 0.011073,0.041527 0.013853,0.02491 0.035984,0.038749 0.05813,0.047072 0.00275,0.00276 -1.48e-5,0.011059 -1.48e-5,0.013838 z M 1.0580078,1.9345958 c 0,-0.00277 0,-0.00554 0.00276,-0.00832 h 0.022145 c 0.019382,0 0.041528,0.00832 0.05813,-0.011045 0.011073,0 0.011073,0.011045 0.013838,0.022133 0.00276,0.011087 0.00276,0.019368 0.00276,0.033205 -0.00554,0.00832 -0.0083,0.022161 -0.019382,0.02769 a 0.06102312,0.0610235 0 0 1 -0.044278,0 c -0.022136,-0.013837 -0.035975,-0.033206 -0.035975,-0.063661 z m 0.4234994,-0.096879 c -0.027661,0.096893 -0.0415,0.1439366 0.00277,0.2435808 0,0.00277 0.00554,0.016616 0,0.019367 -0.047071,-0.011044 -0.060896,-0.016589 -0.1051873,-0.019367 -0.041528,-0.00554 -0.110731,0.00554 -0.155009,0.00554 -0.038776,0 -0.074747,0.00277 -0.1107309,0.00554 -0.011073,-0.00554 -0.00554,-0.019368 -0.00276,-0.024911 0.00276,-0.013838 0.00554,-0.019368 0.00554,-0.035984 0.00554,-0.00551 0.013838,-0.00276 0.019367,-0.00551 0.024911,-0.00277 0.047057,-0.024939 0.049821,-0.047072 0.00832,-0.024911 0,-0.052601 -0.011045,-0.074733 0,-0.00554 -0.011088,-0.011074 -0.00554,-0.016617 0.027676,-0.055365 0.0083,-0.1134811 -0.00276,-0.1688474 -0.0083,-0.038749 -0.024911,-0.080276 -0.030455,-0.1218043 0,-0.00554 -0.00553,-0.013838 0.00276,-0.016588 l 0.00276,0.00276 c 0.033233,0.038749 0.1245545,0.1190256 0.1577881,0.1467161 0.033205,0.027661 0.1217754,0.080277 0.1799198,0.091321 0.00553,0.00553 0.00553,0.011074 0.00275,0.016617 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path6"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.7250867,1.0017716 c 0.00554,0.0083 0.00832,0.013837 0.00554,0.022147 -0.011045,0 -0.013839,-0.013837 -0.022131,-0.019382 -0.016617,-0.005529 -0.030455,0 -0.044278,0.00554 -0.038776,0.016617 -0.071983,0.047058 -0.1079661,0.06366 -0.00275,0 -0.00829,0 -0.011073,-0.00276 0.00554,-0.00554 0.016617,-0.0083 0.02494,-0.011074 0.038748,-0.024925 0.074733,-0.0664387 0.1217754,-0.0719818 0.013824,0 0.024898,0.002783 0.03319,0.0138525 z m -0.00276,0.06366 c -0.00275,-0.0083 -0.00275,-0.024925 -0.013838,-0.027676 -0.00277,0.00829 0,0.013837 -0.00277,0.019367 -0.00275,0.00277 -0.00829,0.0083 -0.016588,0.00554 -0.047071,0.00553 -0.080276,0.044292 -0.119025,0.066439 -0.013867,0.0083 -0.02769,0.011073 -0.041528,0.016602 -0.00277,0 -0.00277,0.00277 0,0.00554 0.044278,0.00554 0.085805,0.00832 0.1300981,0.013837 l 0.047043,-0.00551 c 0.00277,-0.00832 -0.00554,-0.011073 -0.00554,-0.019382 0.00832,-0.019381 0.00832,-0.041528 0.00277,-0.060896 0.00554,-0.00832 0.019381,-2.98e-5 0.019381,-0.013867 z m -0.033204,0.074734 c -0.00832,0.0083 -0.016617,0 -0.02491,0.00276 -0.019367,-0.00276 -0.049822,0.00276 -0.071983,0 -0.00275,-0.00276 -0.00554,-0.00554 -0.00275,-0.0083 0.00275,-0.00554 0.011045,-0.00554 0.016588,-0.011073 0.024911,-0.013837 0.047072,-0.027676 0.071982,-0.033219 0.00554,0 0.011073,0.00276 0.011073,0.00553 0.00275,0.013867 0,0.033233 0,0.044307 z m 0.058116,0.1411718 c 0,0 0.00276,-0.00554 0.00554,-0.00554 0.00276,0.00277 0.00276,0.00554 0.00276,0.00832 0,0.00829 -0.00276,0.016588 -0.00276,0.024911 -0.00554,0.011074 -0.00554,0.022132 -0.00554,0.033206 v 0.011074 c 0.00829,0.00829 0.016617,0.011073 0.02769,0.00829 l 0.019368,-0.011074 c 0.016588,-0.011044 0.030455,-0.019367 0.060895,-0.027661 v 0.011073 c 0,0.00276 -0.02769,0.013837 -0.02769,0.013837 -0.02216,0.00829 -0.044278,0.016617 -0.06366,0.027661 -0.00554,0.00277 -0.011073,0 -0.016617,-0.00276 h -0.00276 c -0.00832,-0.011074 -0.00832,-0.022161 -0.00832,-0.033206 0,-0.00832 0,-0.019367 0.00277,-0.02769 0.00276,-0.00829 0.00554,-0.016588 0.00554,-0.027662 z m -0.6560195,-0.0083 c 0.016602,0.030454 0,0.060896 0,0.094114 0.00276,0.00829 0.022146,0.00829 0.016602,0.019367 -0.00553,0.00554 -0.011059,0.00554 -0.013838,0 -0.011074,-0.00276 -0.013853,-0.00829 -0.013853,-0.016588 -0.00276,-0.030454 0.019382,-0.063688 0,-0.0886 -0.00553,-0.00829 -0.016603,-0.011073 -0.022131,-0.013837 -0.019382,0.00276 -0.027675,0.024911 -0.033219,0.038749 -0.011074,0.035984 -0.013839,0.077512 0.019367,0.1051875 0.019382,0.011074 0.041527,0.02491 0.044292,0.049823 0.00276,0.00277 0.0083,0.00832 0.013839,0.00554 0.00553,0 0.00553,-0.016616 0.013838,-0.011073 l 0.00276,0.00832 c -0.00276,0.00554 -0.00276,0.019366 -0.013838,0.019366 -0.00555,0 -0.011074,-0.00277 -0.016617,-0.00554 -0.013839,-0.013838 -0.00276,-0.033204 -0.022145,-0.038749 -0.033219,-0.011074 -0.055365,-0.044278 -0.05813,-0.077512 -0.00276,-0.030454 0,-0.066411 0.027675,-0.09135 0.011074,-0.00829 0.022145,-0.013837 0.035984,-0.00829 0.00833,0 0.016645,0.00554 0.019411,0.011074 z M 0.68156537,1.500021 c -0.0608944,0.027661 -0.0774975,0.099644 -0.0802762,0.1024087 v 0.00554 l 0.005531,0.00276 c 0.002765,0 0.0581297,0.019395 0.12733349,-0.013838 0.0664388,-0.033205 0.0802763,-0.1024089 0.0802763,-0.1024089 l 0.002765,-0.00832 -0.005531,-0.00276 c -0.002775,0 -0.0719821,-0.011074 -0.13009763,0.016616 z m 0.005531,0.013838 c 0.0442922,-0.019367 0.0941142,-0.019367 0.11348147,-0.016616 -0.00555,0.019367 -0.0249103,0.06366 -0.0747328,0.085806 -0.0498225,0.024911 -0.0913491,0.019367 -0.107952,0.016617 0.00555,-0.019367 0.0249103,-0.066439 0.0692033,-0.085807 z m 0.0553649,-0.146716 c -0.0608944,0.02769 -0.0830409,0.096894 -0.0830409,0.099644 l -0.002765,0.00832 h 0.008307 c 0,0 0.055365,0.019367 0.12455447,-0.013867 0.0692035,-0.033205 0.0830409,-0.099644 0.0830409,-0.1024089 v -0.00554 l -0.00555,-0.00277 c -0.002765,1.23e-5 -0.0664378,-0.01103 -0.12455446,0.016631 z m 0.005531,0.013838 c 0.0415275,-0.022132 0.0885853,-0.019367 0.10795191,-0.016588 -0.00555,0.016588 -0.0221457,0.058116 -0.0747328,0.083028 -0.0470578,0.024911 -0.09135,0.019367 -0.10518731,0.016617 0.00555,-0.019381 0.02769,-0.066439 0.0719682,-0.083057 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path8"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 0.81995791,1.2370441 c -0.0608944,0.024911 -0.0858056,0.096894 -0.0885704,0.099644 v 0.00554 l 0.00555,0.00277 c 0.002765,0.00276 0.0581156,0.016588 0.12733331,-0.016617 0.0664247,-0.030454 0.0830409,-0.094114 0.0830409,-0.096893 v -0.00554 l -0.005531,-0.00276 C 0.9389866,1.220451 0.87809264,1.2121238 0.8199625,1.2370351 Z m 0.005531,0.013837 c 0.0415275,-0.019367 0.0885853,-0.016588 0.10518721,-0.013837 a 0.15547929,0.15548025 0 0 1 -0.0747328,0.080277 c -0.0470578,0.022161 -0.0913491,0.019368 -0.10795191,0.016617 0.008307,-0.019367 0.0332193,-0.063688 0.0774975,-0.083057 z m 0.0692035,-0.1411579 c -0.0581297,0.024925 -0.0885703,0.094115 -0.0885703,0.096879 l -0.002765,0.00832 0.008307,0.00275 c 0,0 0.0553509,0.013838 0.12455437,-0.016617 0.0692025,-0.033201 0.0858047,-0.094096 0.0858047,-0.096861 v -0.00554 l -0.00553,-0.00276 c -0.00277,-1.48e-5 -0.0609085,-0.011088 -0.12180415,0.013837 z m 0.008307,0.013837 c 0.0415275,-0.019368 0.0858056,-0.016603 0.10242259,-0.013837 -0.00555,0.016617 -0.0249254,0.055352 -0.0775116,0.077498 -0.0470569,0.022161 -0.0885703,0.019368 -0.10518722,0.016617 0.008307,-0.016617 0.0359981,-0.063674 0.0802763,-0.080277 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path10"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="M 1.0026425,0.98239005 C 0.9445269,1.0073155 0.9112925,1.07374 0.9085283,1.079269 l -0.00555,0.00553 0.0110738,0.00276 c 0,0.00276 0.0553509,0.013837 0.1245545,-0.016603 0.069189,-0.033219 0.085805,-0.0913502 0.085805,-0.0913502 l 0.00276,-0.008303 -0.0083,-0.002764 c -0.00274,1.49e-5 -0.055322,-0.0110589 -0.116232,0.0138525 z m 0.00555,0.011073 c 0.044292,-0.0166019 0.083041,-0.0138375 0.099643,-0.011073 -0.00553,0.0166169 -0.024912,0.0525863 -0.074733,0.0747331 -0.0498225,0.022147 -0.0885712,0.022147 -0.107952,0.016617 0.0110738,-0.016617 0.0415275,-0.060896 0.083042,-0.0802772 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path12"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.1216818,0.85783451 c -0.060896,0.0249114 -0.096879,0.09135 -0.099658,0.0968794 l -0.00553,0.008303 0.011059,0.002765 c 0,0 0.055367,0.008303 0.1245687,-0.0193674 0.071982,-0.030455 0.085805,-0.0885709 0.08857,-0.0885709 v -0.008308 l -0.00829,-0.002764 c 0,-1.48e-5 -0.049822,-0.0110873 -0.1107166,0.0110589 z m 0.00553,0.013838 c 0.041528,-0.0166028 0.080276,-0.013838 0.096893,-0.0110731 -0.00832,0.013838 -0.02769,0.0498223 -0.077512,0.0719685 -0.047057,0.0193815 -0.08857,0.0193815 -0.107952,0.0193815 0.013839,-0.0193815 0.044278,-0.063674 0.088571,-0.0802769 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path14"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.246222,0.74157356 c -0.060896,0.024911 -0.099644,0.09135 -0.1024083,0.0941147 l -0.00554,0.008308 0.011073,0.002764 c 0.00276,0 0.055336,0.008308 0.1245688,-0.0193819 0.069188,-0.0304404 0.08857,-0.0830414 0.08857,-0.0858062 l 0.00275,-0.008308 h -0.00829 c -0.00274,0 -0.049807,-0.0138379 -0.1107167,0.008308 z m 0.00554,0.0138379 c 0.041528,-0.0166168 0.077512,-0.0138379 0.094114,-0.0110733 -0.00829,0.013838 -0.027661,0.0470576 -0.077498,0.0691893 -0.047071,0.0193815 -0.085805,0.0221462 -0.1051872,0.0193815 0.011088,-0.0193671 0.047043,-0.0608952 0.088571,-0.0774975 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path16"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.37632,0.63362119 c -0.058116,0.024911 -0.102408,0.09135 -0.1051871,0.0941147 l -0.00829,0.008308 0.011073,0.002764 c 0.00275,0 0.058115,0.005543 0.127319,-0.0221462 0.071983,-0.0276757 0.088599,-0.077498 0.088599,-0.0830414 l 0.00275,-0.005543 h -0.00829 c 0,-0.002764 -0.044278,-0.0166028 -0.1079663,0.005543 z m 0.00829,0.0138377 c 0.038776,-0.0166169 0.071982,-0.0138377 0.0886,-0.008308 -0.00832,0.0138375 -0.02769,0.0442781 -0.077512,0.0636599 -0.047043,0.0193814 -0.085791,0.0221462 -0.1051874,0.0221462 0.013867,-0.0193675 0.049821,-0.0608811 0.094099,-0.0774981 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path18"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="M 1.5119618,0.53950647 C 1.451067,0.56165277 1.4012309,0.62807733 1.3984805,0.6308421 l -0.00554,0.008309 0.011073,0.002764 c 0.00275,0 0.058116,0.002764 0.1273192,-0.0221467 0.069189,-0.0304404 0.08857,-0.0774976 0.08857,-0.0802623 l 0.00278,-0.005543 -0.00829,-0.002764 c 0,0 -0.041528,-0.0138234 -0.1024226,0.008308 z m 0.00554,0.0110729 c 0.038748,-0.0138375 0.071983,-0.0110729 0.085805,-0.008308 -0.00829,0.0138375 -0.030455,0.0442925 -0.080276,0.0636599 -0.044278,0.0166168 -0.083027,0.0221463 -0.1024369,0.0221463 0.013867,-0.0193675 0.052615,-0.0608952 0.096907,-0.0774977 z M 0.58745143,1.3643924 c -0.002765,0.00276 -0.0442922,0.058116 -0.0470569,0.1217764 -0.005531,0.066439 0.0470569,0.1162609 0.0498216,0.1190541 l 0.00555,0.00551 0.00555,-0.00551 c 0,-0.00277 0.0442781,-0.041528 0.0470578,-0.1190541 0.002765,-0.074733 -0.0498225,-0.1217764 -0.0525862,-0.1217764 l -0.00555,-0.00554 z m -0.035984,0.130099 c 0,-0.00277 0.002765,-0.00554 0.002765,-0.00832 0.002765,-0.047043 0.0276759,-0.091322 0.0387488,-0.1051881 0.0138385,0.013867 0.0415275,0.047072 0.0415275,0.099644 v 0.00554 c -0.002765,0.055366 -0.027675,0.09135 -0.0387488,0.1024374 -0.0110728,-0.011087 -0.0442922,-0.049837 -0.0442922,-0.094115 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path20"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 0.67049256,1.2204558 c -0.002765,0 -0.035984,0.038749 -0.0498225,0.091321 0,0.00832 -0.002765,0.016617 -0.002765,0.024911 -0.008307,0.063688 0.035984,0.116261 0.0387628,0.116261 l 0.005531,0.00829 0.00555,-0.00554 c 0,-0.00276 0.0442781,-0.038749 0.0525871,-0.1134819 0.0110728,-0.074733 -0.035984,-0.1217763 -0.0387488,-0.1217763 l -0.00555,-0.00554 z m -0.0415275,0.1300701 c 0,-0.00276 0,-0.00829 0.002765,-0.013837 0,-0.00829 0,-0.013838 0.002765,-0.019368 0.0110728,-0.041528 0.0304547,-0.069189 0.0415275,-0.080277 0.0110728,0.011073 0.0332194,0.041527 0.0332194,0.088572 0,0.00278 0,0.00832 -0.002775,0.013867 -0.005531,0.055366 -0.0332193,0.088572 -0.0442781,0.099644 -0.008307,-0.013838 -0.0332193,-0.047072 -0.0332185,-0.0886 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path22"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 0.76460668,1.0847986 c 0,0 -0.035984,0.033219 -0.0553509,0.085807 0,0.00832 -0.002775,0.013867 -0.00555,0.022161 -0.0110738,0.060896 0.027675,0.1162609 0.0304397,0.1190257 l 0.002775,0.00554 0.005531,-0.00275 c 0.002765,-0.00278 0.0470578,-0.038778 0.0608944,-0.1079668 0.0166172,-0.071954 -0.0249103,-0.1217904 -0.027675,-0.1217904 l -0.00555,-0.00556 z m -0.0498366,0.132878 c 0,-0.00829 0.002765,-0.013837 0.002765,-0.022133 0.002775,-0.00554 0.002775,-0.013867 0.00555,-0.019396 a 0.20303513,0.20303638 0 0 1 0.0470569,-0.074733 c 0.008307,0.011073 0.0221457,0.035984 0.0221457,0.074733 0,0.00832 0,0.016617 -0.002765,0.02769 -0.008307,0.049823 -0.035984,0.080277 -0.0470578,0.094115 -0.008307,-0.013837 -0.02769,-0.044293 -0.02769,-0.080277 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path24"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 0.86977965,0.9574787 c -0.002765,0 -0.0387488,0.0304403 -0.0608944,0.0802771 -0.002765,0.00829 -0.00555,0.013837 -0.008307,0.022147 -0.0138385,0.060882 0.0166172,0.1190256 0.0193819,0.1190256 l 0.002765,0.00829 0.008307,-0.00554 c 0,0 0.0470569,-0.033205 0.063659,-0.102409 0.0221456,-0.071968 -0.0138384,-0.11902559 -0.0166162,-0.12179026 l -0.005531,-0.005538 z m -0.0581156,0.1356284 c 0,-0.0083 0,-0.019367 0.002765,-0.03044 0.002765,-0.00554 0.00555,-0.013837 0.008307,-0.016617 0.0138525,-0.038749 0.0387628,-0.0636601 0.0498366,-0.0747331 0.005531,0.0110739 0.0166162,0.0332189 0.0166162,0.0636602 0,0.013837 -0.002765,0.024925 -0.00555,0.038749 -0.0138385,0.049822 -0.0415275,0.077498 -0.0553659,0.091336 -0.005559,-0.013823 -0.0166162,-0.038735 -0.0166162,-0.071954 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path26"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 0.98049634,0.83845302 c 0,0 -0.0387488,0.024911 -0.0664237,0.077498 0,0.005543 -0.002775,0.0110729 -0.008307,0.0193815 -0.0166031,0.0581304 0.005531,0.11626088 0.008307,0.11902578 l 0.002765,0.0083 0.008307,-0.00554 c 0,0 0.0470569,-0.03044 0.0719681,-0.0996444 0.027676,-0.0664385 -0.00555,-0.11626084 -0.00555,-0.11626084 l -0.002765,-0.008308 z M 0.9140726,0.98239005 c 0,-0.0138375 0.002765,-0.0276758 0.008297,-0.0415283 0,-0.008308 0.002775,-0.0138379 0.00555,-0.0193674 0.0193819,-0.0359838 0.0442922,-0.0581305 0.0553659,-0.0664246 0.00555,0.008294 0.0110738,0.0249114 0.0110738,0.0498223 0,0.0138376 -0.002775,0.0304549 -0.0110738,0.0498363 A 0.19287412,0.19287532 0 0 1 0.9223911,1.0405353 C 0.9196161,1.0294483 0.9140841,1.0100663 0.9140841,0.9823911 Z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path28"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.1023003,0.72773593 c -0.00276,0.002764 -0.041528,0.0193815 -0.071969,0.0719682 -0.00277,0.008308 -0.00555,0.0138379 -0.0083,0.0221467 -0.0221456,0.0553658 -0.0083,0.11348181 -0.00553,0.11626093 v 0.011073 l 0.011059,-0.005538 c 0,0 0.047058,-0.0304409 0.077512,-0.0941148 0.033219,-0.066439 0.0083,-0.11626095 0.00553,-0.11904008 l -0.00276,-0.005529 z m -0.077512,0.16053939 c 0,-0.0193676 0.00276,-0.0415138 0.011074,-0.0636604 0.00276,-0.005529 0.00276,-0.0110729 0.0083,-0.0166024 0.019382,-0.0359842 0.047057,-0.0553658 0.05813,-0.0636599 0.00276,0.008308 0.00553,0.0193671 0.00553,0.0359842 0,0.0193671 -0.00276,0.0387485 -0.013838,0.0636599 -0.022145,0.0442784 -0.052587,0.0692033 -0.066439,0.0802767 -0.00276,-0.008323 -0.00276,-0.0221462 -0.00276,-0.0359982 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path30"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.2296336,0.62807735 c -0.00277,0 -0.044307,0.0138521 -0.077512,0.066439 -0.00276,0.005529 -0.00553,0.011073 -0.011073,0.0193671 -0.022146,0.052587 -0.016617,0.11626094 -0.016617,0.11902567 l 0.00276,0.008308 0.0083,-0.005543 c 0.00276,0 0.049821,-0.0276757 0.088584,-0.0885709 0.035956,-0.0636743 0.016588,-0.11349623 0.013838,-0.11626095 l -0.00275,-0.008308 z M 1.138285,0.80801263 c 0,-0.0221462 0.00276,-0.0581305 0.016616,-0.0885853 0.00276,-0.008309 0.00553,-0.0110733 0.0083,-0.0166028 0.024926,-0.0359842 0.052586,-0.0525866 0.06366,-0.0608952 0.00277,0.008309 0.00277,0.0138379 0.00277,0.0249109 0,0.0193675 -0.00277,0.0442784 -0.019396,0.0719685 -0.024911,0.0442784 -0.05535,0.0692039 -0.071954,0.0802767 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path32"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.365247,0.53397701 c -0.00275,0 -0.044278,0.0110729 -0.083027,0.0636599 -0.00554,0.002764 -0.00829,0.0110729 -0.011073,0.0166168 -0.027662,0.0525866 -0.030455,0.11624695 -0.030455,0.1190257 v 0.0110731 l 0.011073,-0.005543 c 0.00278,-0.002764 0.0526,-0.024911 0.094114,-0.0858061 0.041528,-0.0608952 0.02769,-0.11348223 0.02769,-0.11348223 l -0.00278,-0.008308 z M 1.28222,0.62254791 c 0.00275,-0.005529 0.00829,-0.013838 0.011073,-0.0166168 0.024911,-0.0359703 0.055366,-0.0498223 0.066439,-0.0553518 0.00275,0.002764 0.00275,0.005529 0.00275,0.0110731 0,0.0193815 -0.00554,0.0498219 -0.030455,0.0830414 -0.027661,0.0415138 -0.058115,0.0636599 -0.074733,0.0747333 0.00276,-0.0193815 0.00554,-0.0636599 0.024926,-0.0968792 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path34"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 1.5064182,0.4481705 c -0.00554,0 -0.047043,0.008307 -0.08857,0.0581306 -0.044278,0.0498223 -0.0526,0.13286373 -0.0526,0.13564284 l -0.00275,0.0110729 0.011073,-0.002764 c 0.00275,-0.002764 0.052572,-0.024911 0.099643,-0.0830414 0.047043,-0.0581304 0.038748,-0.11071707 0.038748,-0.11348185 v -0.005531 h -0.00554 z M 1.4289342,0.517374 c 0.027661,-0.035984 0.058116,-0.0470578 0.069189,-0.0525872 0,0.0166032 -0.00277,0.0525872 -0.035984,0.0941147 -0.030455,0.038749 -0.06366,0.0608956 -0.080276,0.0719685 0.00275,-0.0249393 0.016617,-0.0802911 0.047071,-0.113496 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path36"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 0.16117319,1.1484729 c 0,0.3432253 0.18546365,0.6726123 0.48439425,0.8608562 l 0.0110738,0.00554 0.008307,-0.011073 c 0.002765,-0.00277 0.002765,-0.00554 0.002765,-0.00829 0,-0.00554 -0.00555,-0.013867 -0.008307,-0.016616 L 0.64278916,1.962268 C 0.57913016,1.89308 0.56529166,1.8266264 0.56529166,1.7768042 c 0,-0.058117 0.0193819,-0.094114 0.0221457,-0.096865 l 0.002765,-0.011073 -0.005531,-0.00829 C 0.46009375,1.5193952 0.39366953,1.3422247 0.39366953,1.1484658 c 0,-0.4262808 0.34323731,-0.77227055 0.77226597,-0.77227055 0.1190109,0 0.2325206,0.0276759 0.3377079,0.0774975 l 0.011073,0.00554 0.1550092,-0.177156 -0.016617,-0.0110747 A 1.0197787,1.0197852 0 0 0 1.1659455,0.14645834 C 0.61236231,0.14644362 0.161173,0.59763611 0.16117319,1.1484729 Z m 0.0332194,0 c 0,-0.53423359 0.43457231,-0.96880869 0.97156731,-0.96880869 0.1577879,0 0.3127969,0.0387487 0.4539395,0.11071754 C 1.5977679,0.315293 1.5174913,0.40664281 1.5064182,0.42048041 1.3984805,0.37064384 1.2849706,0.34296884 1.1659599,0.34296884 c -0.4456455,0 -0.80548527,0.36262085 -0.80548527,0.80550436 0,0.1992884 0.0664387,0.3819744 0.19375762,0.5259255 -0.008307,0.016588 -0.0221457,0.052573 -0.0221457,0.1024086 0,0.03875 0.0110728,0.0886 0.0387488,0.1384214 C 0.33556413,1.7297644 0.19439284,1.4446555 0.19439259,1.1484729 Z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path38"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="M 1.5175056,0.42600987 A 0.78132966,0.78133453 0 0 0 1.1659742,0.34296893 c -0.44564564,0 -0.80548533,0.36262086 -0.80548533,0.80550437 0,0.2020531 0.0692035,0.3875039 0.19930135,0.5342196 l 0.0138384,0.013837 0.0608944,-0.091322 -0.002765,-0.00554 h -0.0138525 c 0.002765,-0.00277 0.002765,-0.00832 0.00555,-0.011074 -0.00555,-0.00554 -0.0110738,-0.011073 -0.0138384,-0.016616 -0.005531,0.00832 -0.0110738,0.013838 -0.0138385,0.016616 -0.0110738,-0.011073 -0.044279,-0.049822 -0.044279,-0.094115 0,-0.00277 0.002765,-0.00277 0.002765,-0.00554 -0.0581297,-0.099644 -0.0885713,-0.2131548 -0.0885713,-0.3404746 0,-0.38476752 0.31278253,-0.69755206 0.70031228,-0.69755206 0.0941,0 0.1854493,0.019381 0.2712693,0.0553659 0.00829,-0.0110737 0.016617,-0.0166032 0.027661,-0.0221466 -0.094114,-0.0442932 -0.1937577,-0.0664387 -0.2989306,-0.0664387 -0.40411785,0 -0.7307526,0.32940135 -0.7307526,0.73075716 0,0.1771422 0.0525863,0.3293875 0.16053835,0.459486 -0.00555,0.00829 -0.0166031,0.022161 -0.0249112,0.035985 C 0.45461988,1.5082731 0.39372493,1.3366464 0.39372493,1.1484309 c 0,-0.42628081 0.34323731,-0.77227044 0.77226597,-0.77227044 0.1107165,0 0.2214475,0.0249113 0.32387,0.0719682 -0.00554,0.008307 -0.00832,0.0166172 -0.013867,0.0276759 0.011073,-0.00554 0.019367,-0.0110737 0.02216,-0.0110737 0,0.0110737 0,0.035984 -0.013838,0.06366 h 0.00275 l 0.044276,-0.0968798 z m -0.00829,-0.15777468 -0.077512,0.0968795 c 0.00832,0.002765 0.013838,0.005531 0.02216,0.008307 l 0.077498,-0.0968795 c -0.00832,-0.002765 -0.013853,-0.00554 -0.022146,-0.008307 z M 1.3597291,0.22395706 1.3154219,0.3319099 c 0.00554,0.002765 0.013867,0.005531 0.02216,0.005531 L 1.38186,0.22672351 c -0.00829,0 -0.016617,-0.002765 -0.022131,-0.002765 z M 1.1797807,0.20181143 1.168722,0.32083709 H 1.190853 L 1.20194,0.20457603 c -0.00829,-0.002765 -0.013838,-0.002765 -0.022159,-0.002765 z m -0.1743619,0.0138385 0.022131,0.11626097 c 0.0083,-0.002765 0.013853,-0.002765 0.022145,-0.002765 L 1.0275531,0.21288424 c -0.00829,0 -0.013839,0.002765 -0.022131,0.002765 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path40"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+      <path
+         d="m 0.83657472,0.25994112 0.0525871,0.10795266 c 0.005531,-0.002765 0.0138385,-0.00554 0.0193669,-0.008307 L 0.85594159,0.25439993 c -0.005531,0.002765 -0.0138385,0.00554 -0.0193669,0.005541 z m -0.1605527,0.0802622 0.0774975,0.0885712 c 0.005531,-0.002765 0.0138385,-0.008307 0.0193819,-0.0110728 l -0.0802763,-0.0885712 c -0.005531,0.002775 -0.0110588,0.00554 -0.0166031,0.0110728 z m -0.14670065,0.10796681 0.0996578,0.0692035 c 0.005531,-0.00554 0.0110738,-0.008307 0.0166031,-0.0138525 L 0.5459388,0.43433174 c -0.00555,0.005531 -0.0110878,0.008297 -0.0166172,0.0138374 z M 0.40476699,0.58656326 0.52102731,0.6308418 c 0.002765,-0.008309 0.008307,-0.0138379 0.0138384,-0.0193675 L 0.41860508,0.56718183 c -0.00555,0.005543 -0.008307,0.0110729 -0.0138381,0.0193814 z m -0.0968931,0.15777466 0.12456853,0.0166028 c 0.005531,-0.005529 0.008307,-0.013838 0.0110747,-0.0193676 L 0.31896268,0.72495632 c -0.002775,0.005543 -0.00555,0.0110731 -0.0110888,0.0193816 z m -0.0608802,0.17439143 0.12455446,-0.0110729 c 0.002756,-0.008308 0.005531,-0.0166169 0.005531,-0.0221462 l -0.12455446,0.0110729 c -0.002756,0.008294 -0.005531,0.0166028 -0.005531,0.0221462 z M 0.21930456,1.1014153 0.34109444,1.0599019 c 0,-0.0083 0,-0.013852 0.002756,-0.022147 l -0.12455456,0.041513 z m 0.008297,0.1854504 0.11073094,-0.071954 v -0.024911 l -0.11348418,0.074733 c 0,0.00829 0.002747,0.016603 0.002747,0.022133 z m 0.0470719,0.1799208 0.0885713,-0.096865 c 0,-0.00832 -0.002756,-0.016616 -0.00555,-0.02491 l -0.0885713,0.099644 c 0,0.00829 0.002756,0.016602 0.00555,0.022131 z m 0.0858056,0.1743919 0.0608944,-0.1190261 c -0.002756,-0.00829 -0.00555,-0.016588 -0.0110747,-0.024911 l -0.0636609,0.1218052 c 0.002765,0.00829 0.008297,0.013823 0.0138385,0.022132 z m 0.10517296,0.143951 0.0332194,-0.1384216 c -0.002756,-0.00829 -0.0110728,-0.016588 -0.0138385,-0.022133 l -0.0359837,0.1411438 c 0.00555,0.00554 0.0110728,0.013867 0.0166028,0.019411 z M 1.4953495,0.53397664 c 0.00277,0.005543 0.00554,0.005543 0.00832,0.008308 0.00275,-0.002764 0.00554,-0.002764 0.00829,-0.002764 0.00277,-0.002764 0.00554,-0.002764 0.00829,-0.005543 -0.00829,-0.002764 -0.013838,-0.008308 -0.019367,-0.0138379 -0.00276,0.005531 -0.00276,0.0110587 -0.00554,0.0138379 z"
+         fill="#4c8175"
+         stroke="#4c8175"
+         stroke-width="1.25113"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-miterlimit="2.613"
+         id="path42"
+         style="fill:#ffffff;fill-opacity:0.70380759;stroke:#ffffff;stroke-width:0.0294648;stroke-miterlimit:2.613;stroke-dasharray:none;stroke-opacity:0.70323652" />
+    </g>
+  </g>
+</svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.726fbb30.min.js"></script>
+      
+        <script src="../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
